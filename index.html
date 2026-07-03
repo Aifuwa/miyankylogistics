@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miyanky Logistics Ltd - Premium UK Transport & Freight</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGold: '#dfba5b', // Champagne Gold
+                        brandGoldHover: '#d4b043',
+                        brandBlue: '#0f4c81', // Corporate Blue
+                        brandBlueLight: '#2563eb', // Vibrant Tech Blue
+                        brandDark: '#040407', // Deep obsidian black
+                        brandCard: '#0a0a0f', // Translucent slate card
+                        brandBorder: '#1c1c24',
+                    },
+                    boxShadow: {
+                        goldGlow: '0 0 35px rgba(223, 186, 91, 0.25)',
+                        goldGlowStrong: '0 0 50px rgba(223, 186, 91, 0.45)',
+                        blueGlow: '0 0 35px rgba(37, 99, 235, 0.25)',
+                        glassShadow: '0 30px 60px -15px rgba(0,0,0,0.8)',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Premium Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #040407;
+        }
+        .serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom Smooth View Routing Transition */
+        .view-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px) scale(0.99);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+        .view-section.active-view {
+            display: block;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        /* Light grid layout pattern */
+        .grid-pattern {
+            background-image: radial-gradient(rgba(223, 186, 91, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="text-white flex flex-col min-h-screen overflow-x-hidden selection:bg-brandGold selection:text-black">
+
+    <!-- Transparent Floating Glass Capsule Header -->
+    <header class="sticky top-0 z-50 bg-black/35 backdrop-blur-xl border-b border-white/[0.05] transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 md:h-24 flex items-center justify-between">
+            
+            <!-- Logo Box with clean gold accent -->
+            <a href="#" onclick="switchView('home')" class="flex items-center gap-3 bg-white/5 px-5 py-3 rounded-2xl border border-brandGold/30 shadow-premiumShadow transition-transform hover:scale-[1.01]">
+                <img src="images/logo.jpeg" alt="Miyanky Logistics Logo" class="h-9 w-auto object-contain">
+            </a>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-btn" class="lg:hidden text-white bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/10 focus:outline-none hover:text-brandGold transition" aria-label="Toggle Menu">
+                <svg id="menu-icon" class="h-5 w-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <!-- Desktop Menu (Sleek Glass Capsule) -->
+            <nav class="hidden lg:flex items-center gap-1 bg-white/[0.02] border border-brandGold/25 p-1.5 rounded-full shadow-premiumShadow">
+                <a href="#" onclick="switchView('home')" class="nav-link text-black bg-brandGold px-5 py-2.5 rounded-full font-bold text-xs tracking-wider uppercase shadow-sm transition-all duration-300">Home</a>
+                <a href="#" onclick="switchView('about')" class="nav-link text-zinc-300 hover:text-brandGold px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300">About</a>
+                <a href="#" onclick="switchView('services')" class="nav-link text-zinc-300 hover:text-brandGold px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300">Services</a>
+                <a href="#" onclick="switchView('tracking')" class="nav-link text-zinc-300 hover:text-brandGold px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300">Tracking</a>
+                <a href="#" onclick="switchView('careers')" class="nav-link text-zinc-300 hover:text-brandGold px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300">Careers</a>
+                <a href="#" onclick="switchView('blog')" class="nav-link text-zinc-300 hover:text-brandGold px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300">Insights</a>
+                <a href="#" onclick="switchView('contact')" class="nav-link text-zinc-300 hover:text-brandGold px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300">Contact</a>
+                <a href="#" onclick="switchView('pricing')" class="bg-brandBlueLight hover:bg-blue-600 text-white px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 ml-3 shadow-blueGlow">
+                    Instant Quote
+                </a>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu Drawer (Consistent Platinum Glass Backdrop) -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute left-0 right-0 top-20 bg-brandDark border-b border-brandGold/20 px-6 py-8 space-y-4 shadow-2xl z-50 backdrop-blur-2xl">
+            <a href="#" onclick="switchView('home')" class="block text-brandGold font-bold text-sm tracking-widest uppercase">Home</a>
+            <a href="#" onclick="switchView('about')" class="block text-zinc-300 hover:text-brandGold text-sm font-semibold tracking-widest uppercase transition-colors">About Us</a>
+            <a href="#" onclick="switchView('services')" class="block text-zinc-300 hover:text-brandGold text-sm font-semibold tracking-widest uppercase transition-colors">Services</a>
+            <a href="#" onclick="switchView('tracking')" class="block text-zinc-300 hover:text-brandGold text-sm font-semibold tracking-widest uppercase transition-colors">Tracking</a>
+            <a href="#" onclick="switchView('careers')" class="block text-zinc-300 hover:text-brandGold text-sm font-semibold tracking-widest uppercase transition-colors">Careers</a>
+            <a href="#" onclick="switchView('blog')" class="block text-zinc-300 hover:text-brandGold text-sm font-semibold tracking-widest uppercase transition-colors">Insights</a>
+            <a href="#" onclick="switchView('contact')" class="block text-zinc-300 hover:text-brandGold text-sm font-semibold tracking-widest uppercase transition-colors">Contact</a>
+            <hr class="border-white/10 my-5">
+            <a href="#" onclick="switchView('pricing')" class="block text-center bg-brandBlueLight text-white py-4 rounded-2xl font-bold tracking-widest uppercase shadow-blueGlow text-xs">Instant Quote</a>
+        </div>
+    </header>
+
+    <!-- Main Dynamic View Container -->
+    <main class="flex-grow relative">
+
+        <!-- Colorful Ambient Aurora Lights (Persists across view switches for rich color) -->
+        <div class="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-brandGold/10 blur-[150px] pointer-events-none z-0"></div>
+        <div class="absolute top-[30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-brandBlueLight/10 blur-[150px] pointer-events-none z-0"></div>
+        <div class="absolute bottom-[20%] left-[10%] w-[500px] h-[500px] rounded-full bg-fuchsia-500/10 blur-[150px] pointer-events-none z-0"></div>
+
+        <!-- ================= HOME VIEW ================= -->
+        <section id="view-home" class="view-section active-view relative z-10">
+            <!-- Full Exposure Video Hero with Transparent Glass Overlay -->
+            <section class="relative h-[85vh] md:h-screen flex items-center justify-center overflow-hidden bg-brandDark">
+                <video id="hero-video" autoplay loop muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-0 opacity-100">
+                    <source src="video/hero.mp4" type="video/mp4">
+                    <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1600" alt="Freight Truck" class="w-full h-full object-cover">
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-r from-brandDark via-brandDark/40 to-transparent z-10"></div>
+                <div class="absolute inset-0 bg-brandDark/30 z-10"></div>
+                <div class="absolute inset-0 grid-pattern z-10 opacity-30"></div>
+
+                <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-start">
+                    <!-- Beautifully Transparent Glass Hero Card (Max video visibility & 100% readability) -->
+                    <div class="max-w-xl bg-black/25 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-brandGold/30 shadow-goldGlowStrong text-left">
+                        <span class="inline-flex items-center gap-2 text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] bg-brandGold/15 border border-brandGold/25 px-4 py-2 rounded-full mb-6">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brandGold animate-pulse"></span> Nationwide Transport Network
+                        </span>
+                        <h1 class="text-3xl md:text-5xl font-light tracking-tight leading-[1.1] text-white serif-heading">
+                            Smart transport. <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brandGold via-white to-white font-normal italic">Absolute security.</span>
+                        </h1>
+                        <p class="text-xs md:text-sm text-zinc-300 mb-8 leading-relaxed font-light">
+                            Miyanky Logistics Ltd coordinates high-standard distribution pathways, scheduled freight transport routes, and custom-contract logistics structures to move your cargo across the UK securely.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#" onclick="switchView('pricing')" class="bg-brandGold hover:bg-white text-black px-8 py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 text-center shadow-goldGlow">
+                                Instant Quote
+                            </a>
+                            <a href="#" onclick="switchView('services')" class="border border-white/10 hover:border-brandGold/40 bg-white/[0.03] text-white px-8 py-3.5 rounded-xl font-semibold text-xs tracking-wider uppercase transition-all duration-300 text-center">
+                                Our Capabilities
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Bar -->
+            <section class="py-16 bg-brandDark border-y border-white/[0.04] relative z-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-x divide-white/[0.04]">
+                        <div class="p-2">
+                            <p class="text-3xl md:text-5xl font-light text-brandGold tracking-tight serif-heading font-mono">99.8%</p>
+                            <p class="text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-bold mt-2">On-Time Accuracy</p>
+                        </div>
+                        <div class="p-2">
+                            <p class="text-3xl md:text-5xl font-light text-brandGold tracking-tight serif-heading font-mono">24/7</p>
+                            <p class="text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-bold mt-2">Active Dispatch</p>
+                        </div>
+                        <div class="p-2">
+                            <p class="text-3xl md:text-5xl font-light text-brandGold tracking-tight serif-heading font-mono">10k+</p>
+                            <p class="text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-bold mt-2">Loads Transported</p>
+                        </div>
+                        <div class="p-2">
+                            <p class="text-3xl md:text-5xl font-light text-brandGold tracking-tight serif-heading font-mono">100%</p>
+                            <p class="text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-bold mt-2">UK Main Roads</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Core Operations Section (Highly Colorful with realistic photos & glassmorphic cards) -->
+            <section class="py-28 bg-transparent relative z-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-20">
+                        <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">Our Operations</span>
+                        <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-white serif-heading">Bespoke Logistics Services</h2>
+                        <div class="h-[2px] w-16 bg-gradient-to-r from-brandGold via-brandBlueLight to-brandGold mx-auto mt-4"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Same-Day Express Card -->
+                        <div class="bg-brandCard/40 backdrop-blur-md rounded-3xl border border-white/[0.04] hover:border-brandGold/35 hover:shadow-2xl transition-all duration-300 group overflow-hidden shadow-glassShadow">
+                            <div class="h-56 w-full overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?q=80&w=800" alt="Same-Day Van" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brandDark/85 to-transparent"></div>
+                                <span class="absolute bottom-4 left-6 bg-brandGold text-black font-bold text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md">Critical Transit</span>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-lg font-bold mb-3 text-white">Same-Day Express</h3>
+                                <p class="text-zinc-400 text-xs leading-relaxed mb-6">Immediate vehicle dispatch for high-value assets and engineering parts. Dedicated collections completed within 45 minutes.</p>
+                                <button onclick="switchView('sameday')" class="text-brandGold font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
+                                    Read Service Details ➔
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Interstate Cargo Card -->
+                        <div class="bg-brandCard/40 backdrop-blur-md rounded-3xl border border-white/[0.04] hover:border-brandGold/35 hover:shadow-2xl transition-all duration-300 group overflow-hidden shadow-glassShadow">
+                            <div class="h-56 w-full overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800" alt="Freight HGV" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brandDark/85 to-transparent"></div>
+                                <span class="absolute bottom-4 left-6 bg-brandBlueLight text-white font-bold text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md">National Transport</span>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-lg font-bold mb-3 text-white">Interstate Delivery</h3>
+                                <p class="text-zinc-400 text-xs leading-relaxed mb-6">Reliable palletized shipping and full-truckload trunking operations connecting industrial centers nationwide.</p>
+                                <button onclick="switchView('interstate')" class="text-brandGold font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
+                                    Read Service Details ➔
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- International Sea & Air Card -->
+                        <div class="bg-brandCard/40 backdrop-blur-md rounded-3xl border border-white/[0.04] hover:border-brandGold/35 hover:shadow-2xl transition-all duration-300 group overflow-hidden shadow-glassShadow">
+                            <div class="h-56 w-full overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="International Cargo Ship" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brandDark/85 to-transparent"></div>
+                                <span class="absolute bottom-4 left-6 bg-brandGold text-black font-bold text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md">Global Shipping</span>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-lg font-bold mb-3 text-white">International Shipping</h3>
+                                <p class="text-zinc-400 text-xs leading-relaxed mb-6">High-end ocean and air freight logistics connecting the UK to worldwide markets with seamless customs clearance support.</p>
+                                <button onclick="switchView('international')" class="text-brandGold font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
+                                    Read Service Details ➔
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Live Tracking Promo -->
+            <section class="py-24 bg-brandDark text-white relative overflow-hidden border-t border-white/[0.04] shadow-goldGlowStrong">
+                <div class="absolute -right-32 -bottom-32 w-96 h-96 bg-brandGold/10 rounded-full blur-[150px] z-0"></div>
+                <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+                    <h2 class="text-2xl md:text-4xl font-light tracking-tight mb-4 serif-heading">Live Telemetry & Tracking Control</h2>
+                    <p class="text-slate-400 text-xs mb-8 max-w-sm mx-auto leading-relaxed">Instantly verify the operational parameters, dispatch statuses, and electronic sign-offs of your shipments.</p>
+                    <button onclick="switchView('tracking')" class="inline-block bg-brandGold hover:bg-white text-black font-bold px-10 py-4.5 rounded-xl text-xs tracking-wider uppercase shadow-goldGlow transition-all duration-300">
+                        Launch Telemetry Terminal
+                    </button>
+                </div>
+            </section>
+        </section>
+
+
+        <!-- ================= ABOUT US VIEW ================= -->
+        <section id="view-about" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">Who We Are</span>
+                        <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white serif-heading mb-6">Miyanky Logistics Ltd</h2>
+                        <p class="text-zinc-300 text-sm leading-relaxed mb-6 font-light">
+                            Miyanky Logistics Ltd is a customer-focused logistics company dedicated to providing dependable transportation and delivery solutions across the UK. Our mission is to simplify logistics by offering reliable, efficient, and cost-effective services tailored to each client's requirements.
+                        </p>
+                        <p class="text-zinc-300 text-sm leading-relaxed mb-6 font-light">
+                            We believe that trust, punctuality, and professionalism are the foundation of excellent logistics. Whether serving businesses or private customers, we work hard to ensure every delivery reaches its destination safely and on schedule.
+                        </p>
+                        <p class="text-zinc-300 text-sm leading-relaxed font-light">
+                            Our goal is to build long-term relationships with our clients by consistently delivering exceptional service.
+                        </p>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1516575150278-77136aed6920?q=80&w=800" alt="Warehouse loading docks" class="rounded-3xl border border-white/[0.04] shadow-glassShadow w-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Company Values Section -->
+                <div class="mt-28">
+                    <div class="text-center mb-16">
+                        <h3 class="text-2xl font-bold text-white">Our Operations Principles</h3>
+                        <div class="h-[1px] w-12 bg-brandGold mx-auto mt-4"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                        <div class="bg-brandCard/40 backdrop-blur-md p-8 rounded-2xl shadow-glassShadow border border-white/[0.04] text-center">
+                            <span class="text-brandGold text-3xl font-extrabold block mb-3">01</span>
+                            <h4 class="font-bold text-sm text-white mb-2">Reliability</h4>
+                            <p class="text-zinc-400 text-xs leading-relaxed">Doing what we promise, on time, every time.</p>
+                        </div>
+                        <div class="bg-brandCard/40 backdrop-blur-md p-8 rounded-2xl shadow-glassShadow border border-white/[0.04] text-center">
+                            <span class="text-brandGold text-3xl font-extrabold block mb-3">02</span>
+                            <h4 class="font-bold text-sm text-white mb-2">Integrity</h4>
+                            <p class="text-zinc-400 text-xs leading-relaxed">Transparent communication and fair dealings.</p>
+                        </div>
+                        <div class="bg-brandCard/40 backdrop-blur-md p-8 rounded-2xl shadow-glassShadow border border-white/[0.04] text-center">
+                            <span class="text-brandGold text-3xl font-extrabold block mb-3">03</span>
+                            <h4 class="font-bold text-sm text-white mb-2">Efficiency</h4>
+                            <p class="text-zinc-400 text-xs leading-relaxed">Optimised routing to save you time and money.</p>
+                        </div>
+                        <div class="bg-brandCard/40 backdrop-blur-md p-8 rounded-2xl shadow-glassShadow border border-white/[0.04] text-center">
+                            <span class="text-brandGold text-3xl font-extrabold block mb-3">04</span>
+                            <h4 class="font-bold text-sm text-white mb-2">Satisfaction</h4>
+                            <p class="text-zinc-400 text-xs leading-relaxed">Putting your needs at the heart of our operations.</p>
+                        </div>
+                        <div class="bg-brandCard/40 backdrop-blur-md p-8 rounded-2xl shadow-glassShadow border border-white/[0.04] text-center">
+                            <span class="text-brandGold text-3xl font-extrabold block mb-3">05</span>
+                            <h4 class="font-bold text-sm text-white mb-2">Professionalism</h4>
+                            <p class="text-zinc-400 text-xs leading-relaxed">Highly-trained staff from booking to delivery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SERVICES VIEW ================= -->
+        <section id="view-services" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">Portfolio</span>
+                    <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white serif-heading">Bespoke Logistics Services</h2>
+                    <div class="h-[1px] w-12 bg-brandGold mx-auto mt-6"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1: Same-Day Delivery -->
+                    <div class="bg-brandCard/40 backdrop-blur-md rounded-3xl border border-white/[0.04] shadow-glassShadow hover:border-brandGold/35 transition-all duration-300 group overflow-hidden">
+                        <div class="h-48 w-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=800" alt="Same Day Van" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-3 text-white">Same-Day Delivery</h3>
+                            <p class="text-zinc-400 text-xs leading-relaxed mb-6">Urgent deliveries completed quickly and efficiently. Critical parts and high-value cargo delivered within strict hourly schedules.</p>
+                            <button onclick="switchView('sameday')" class="text-brandGold font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
+                                Open Service Console ➔
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: Interstate Delivery -->
+                    <div class="bg-brandCard/40 backdrop-blur-md rounded-3xl border border-white/[0.04] shadow-glassShadow hover:border-brandGold/35 transition-all duration-300 group overflow-hidden">
+                        <div class="h-48 w-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1516575150278-77136aed6920?q=80&w=800" alt="Freight HGV" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-3 text-white">Interstate Delivery</h3>
+                            <p class="text-zinc-400 text-xs leading-relaxed mb-6">Scheduled general cargo trunking and structured pallet deliveries connecting major industrial centers across the nation.</p>
+                            <button onclick="switchView('interstate')" class="text-brandGold font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
+                                Open Service Console ➔
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: International Shipping -->
+                    <div class="bg-brandCard/40 backdrop-blur-md rounded-3xl border border-white/[0.04] shadow-glassShadow hover:border-brandGold/35 transition-all duration-300 group overflow-hidden">
+                        <div class="h-48 w-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="Freight Ship" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-3 text-white">International Shipping</h3>
+                            <p class="text-zinc-400 text-xs leading-relaxed mb-6">Comprehensive air and ocean logistics options, backed by digital customs clearance and global agent structures.</p>
+                            <button onclick="switchView('international')" class="text-brandGold font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
+                                Open Service Console ➔
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Warehousing -->
+                    <div class="bg-brandCard/40 backdrop-blur-md rounded-3xl border border-white/[0.04] shadow-glassShadow hover:border-brandGold/35 transition-all duration-300 group overflow-hidden">
+                        <div class="h-48 w-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="Warehouse inside" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-3 text-white">Secure Warehousing</h3>
+                            <p class="text-zinc-400 text-xs leading-relaxed mb-6">Secure inventory storage, pick-pack fulfillment structures, and clean 3PL tracking setups.</p>
+                            <button onclick="switchView('warehousing')" class="text-brandGold font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
+                                Open Service Console ➔
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SAME-DAY DELIVERY VIEW ================= -->
+        <section id="view-sameday" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">Specialty Services</span>
+                        <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white serif-heading mb-6">Same-Day Express</h2>
+                        <p class="text-zinc-300 text-sm leading-relaxed mb-6 font-light">
+                            When time is your most critical parameter, our Same-Day Express fleet provides dedicated-drive transits directly to your recipient. We allocate your shipment a single vehicle that carries only your cargo, eliminating hub delays, sorting detours, or multi-stop schedules.
+                        </p>
+                        <div class="bg-brandCard/40 backdrop-blur-md p-6 rounded-2xl border border-white/[0.04] shadow-glassShadow space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="w-2.5 h-2.5 rounded-full bg-brandGold"></span>
+                                <p class="text-xs text-white font-bold">Guaranteed direct-drive routing parameters</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-2.5 h-2.5 rounded-full bg-brandBlueLight"></span>
+                                <p class="text-xs text-white font-bold">Vehicle on-site for collection within 45 minutes</p>
+                            </div>
+                        </div>
+                        <button onclick="switchView('pricing')" class="mt-8 bg-brandGold hover:bg-white text-black px-8 py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-goldGlow">
+                            Calculate Same-Day Rates
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=800" alt="Same day vehicle" class="rounded-3xl border border-white/[0.04] shadow-glassShadow w-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= INTERSTATE DELIVERY VIEW ================= -->
+        <section id="view-interstate" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">Scheduled Freight</span>
+                        <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white serif-heading mb-6">Interstate Transport</h2>
+                        <p class="text-zinc-300 text-sm leading-relaxed mb-6 font-light">
+                            Our domestic interstate network facilitates safe, bulk shipping of palletised cargo, commercial machinery, and wholesale freight throughout the nation. Serving all major industrial regions, we operate nightly linehauls connecting major hubs under strict time management.
+                        </p>
+                        <div class="bg-brandCard/40 backdrop-blur-md p-6 rounded-2xl border border-white/[0.04] shadow-glassShadow space-y-4 text-xs text-zinc-300 font-light">
+                            <div class="flex justify-between border-b border-white/[0.04] pb-2"><span>Network Schedule:</span> <strong class="text-white">Nightly Linehaul Connections</strong></div>
+                            <div class="flex justify-between border-b border-white/[0.04] pb-2"><span>Equipment:</span> <strong class="text-white">Curtainsider / Tail-lift Trailers</strong></div>
+                            <div class="flex justify-between"><span>Sectors Served:</span> <strong class="text-white">Industrial, Retail, Construction</strong></div>
+                        </div>
+                        <button onclick="switchView('pricing')" class="mt-8 bg-brandGold hover:bg-white text-black px-8 py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-goldGlow">
+                            Calculate Interstate Rates
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1516575150278-77136aed6920?q=80&w=800" alt="Freight transportation" class="rounded-3xl border border-white/[0.04] shadow-glassShadow w-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= INTERNATIONAL SHIPPING VIEW ================= -->
+        <section id="view-international" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">Global Logistics</span>
+                        <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white serif-heading mb-6">International Shipping</h2>
+                        <p class="text-zinc-300 text-sm leading-relaxed mb-6 font-light">
+                            Navigate the complex landscape of international trade with confidence. Miyanky Logistics provides comprehensive sea container forwarding (FCL/LCL) and rapid air-cargo pathways. Supported by our digital customs desk, we ensure compliance, smooth handling, and rapid transit through port networks.
+                        </p>
+                        <div class="bg-brandCard/40 backdrop-blur-md p-6 rounded-2xl border border-white/[0.04] shadow-glassShadow space-y-4 text-xs">
+                            <div class="flex items-center gap-3">
+                                <span class="text-brandGold font-bold">✔</span>
+                                <p class="text-white font-bold">Export & Import digital customs processing</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-brandBlueLight font-bold">✔</span>
+                                <p class="text-white font-bold">Worldwide agent integrations in 100+ countries</p>
+                            </div>
+                        </div>
+                        <button onclick="switchView('pricing')" class="mt-8 bg-brandGold hover:bg-white text-black px-8 py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-goldGlow">
+                            Calculate Global Rates
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="International container port" class="rounded-3xl border border-white/[0.04] shadow-glassShadow w-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= WAREHOUSING VIEW ================= -->
+        <section id="view-warehousing" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">3PL Logistics</span>
+                        <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white serif-heading mb-6">Secure Warehousing</h2>
+                        <p class="text-zinc-300 text-sm leading-relaxed mb-6 font-light">
+                            From basic overflow pallet storage to advanced e-commerce order fulfillment, our warehousing modules scale with your demand. Our facility maintains advanced inventory surveillance, clean space metrics, and structured logistics dispatching tools to seamlessly pick and ship orders as they happen.
+                        </p>
+                        <div class="bg-brandCard/40 backdrop-blur-md p-6 rounded-2xl border border-white/[0.04] shadow-glassShadow space-y-3 font-mono text-xs text-zinc-300">
+                            <p>Storage Temp: <span class="text-brandGold font-bold">Ambient / Clean Space</span></p>
+                            <p>Fulfillment: <span class="text-brandGold font-bold">E-commerce API Integrated</span></p>
+                        </div>
+                        <button onclick="switchView('contact')" class="mt-8 bg-brandGold hover:bg-white text-black px-8 py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-goldGlow">
+                            Request Warehouse Survey
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="Warehouse Facility inside" class="rounded-3xl border border-white/[0.04] shadow-glassShadow w-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TRACKING VIEW (Live Terminal) ================= -->
+        <section id="view-tracking" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">Live Telemetry Terminal</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white serif-heading">Track Your Consignment</h2>
+                    <p class="text-zinc-400 text-xs mt-3">Experience our tracking system. Enter <span class="text-brandGold font-mono font-bold">MYK-UK-2026</span> below to test.</p>
+                </div>
+
+                <div class="bg-brandCard/40 backdrop-blur-md p-6 md:p-10 rounded-3xl border border-white/[0.04] shadow-glassShadow">
+                    <div class="flex flex-col md:flex-row gap-4 mb-8">
+                        <input type="text" id="track-input" placeholder="Consignment Code (e.g. MYK-UK-2026)" class="flex-grow bg-black/20 border border-white/[0.08] rounded-xl px-5 py-4 text-white placeholder-zinc-500 font-mono focus:outline-none focus:border-brandGold transition">
+                        <button onclick="handleTrack()" class="bg-brandGold hover:bg-white text-black font-bold px-8 py-4 rounded-xl text-xs uppercase tracking-widest transition-all">
+                            Query Telemetry
+                        </button>
+                    </div>
+
+                    <!-- results -->
+                    <div id="track-results" class="hidden border-t border-white/[0.04] pt-8 space-y-8">
+                        <div class="flex justify-between items-center text-xs">
+                            <div>
+                                <p class="text-zinc-400 font-semibold uppercase tracking-wider">Routing Code</p>
+                                <p class="font-mono text-brandGold font-bold text-sm">MYK-UK-2026-GB</p>
+                            </div>
+                            <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-extrabold px-3 py-1 rounded-full text-[10px] uppercase">Active In-Transit</span>
+                        </div>
+
+                        <!-- Progress visual map -->
+                        <div class="relative">
+                            <div class="absolute left-6 md:left-1/2 top-4 bottom-4 w-[1px] bg-white/[0.08] z-0"></div>
+                            
+                            <div class="space-y-6 relative z-10">
+                                <div class="flex flex-row md:flex-col items-center gap-4 text-left md:text-center">
+                                    <div class="w-8 h-8 rounded-full bg-brandGold text-black flex items-center justify-center font-bold text-xs shadow-goldGlow">✓</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs text-white">Dispatched</h4>
+                                        <p class="text-[10px] text-zinc-400 font-mono">POSTCODE: EC1 (London)</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row md:flex-col items-center gap-4 text-left md:text-center">
+                                    <div class="w-8 h-8 rounded-full bg-brandGold text-black flex items-center justify-center font-bold text-xs shadow-goldGlow">✓</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs text-white">Midlands Sorting</h4>
+                                        <p class="text-[10px] text-zinc-400 font-mono">POSTCODE: B1 (Birmingham)</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row md:flex-col items-center gap-4 text-left md:text-center animate-pulse">
+                                    <div class="w-8 h-8 rounded-full bg-brandBlueLight text-white flex items-center justify-center font-bold text-xs">🚚</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs text-brandBlueLight">In Transit</h4>
+                                        <p class="text-[10px] text-zinc-300 font-mono">POSTCODE: M1 (Manchester)</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row md:flex-col items-center gap-4 text-left md:text-center opacity-30">
+                                    <div class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center font-bold text-xs">4</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs">POD Closed</h4>
+                                        <p class="text-[10px] text-zinc-400">Electronic Handoff</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- error -->
+                    <div id="track-error" class="hidden border-t border-white/[0.04] pt-6 text-center text-red-400 text-xs">
+                        No telemetry found. Try typing <span class="font-bold font-mono text-white">MYK-UK-2026</span>.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PRICING / QUOTE VIEW ================= -->
+        <section id="view-pricing" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">Instant Estimation Engine</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white serif-heading">Calculate Transport Rates</h2>
+                    <div class="h-[1px] w-12 bg-brandGold mx-auto mt-4"></div>
+                </div>
+
+                <div class="bg-brandCard/40 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-white/[0.04] shadow-glassShadow">
+                    <form onsubmit="calculateQuote(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Collection Postcode *</label>
+                                <input type="text" id="quote-origin" required placeholder="e.g. EC1A" class="w-full bg-black/20 border border-white/[0.08] rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-brandGold transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Delivery Postcode *</label>
+                                <input type="text" id="quote-dest" required placeholder="e.g. M1" class="w-full bg-black/20 border border-white/[0.08] rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-brandGold transition">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">SLA PrioritySpeed *</label>
+                                <select id="quote-service" class="w-full bg-brandCard border border-white/[0.08] rounded-xl px-4 py-3 text-sm font-semibold text-zinc-300 focus:outline-none focus:border-brandGold transition">
+                                    <option value="sameday">Same-Day Courier Express (Priority Direct-Drive)</option>
+                                    <option value="nextday">Next-Day Shipping (Scheduled Express)</option>
+                                    <option value="interstate">Interstate General Cargo Trunking</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Weight (kg) *</label>
+                                <input type="number" id="quote-weight" min="1" required class="w-full bg-black/20 border border-white/[0.08] rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-brandGold transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="w-full bg-brandGold hover:bg-white text-black font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition duration-300">
+                                Query Pricing Grid
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- output -->
+                    <div id="quote-results" class="hidden mt-8 p-6 bg-brandGold/10 rounded-2xl border border-brandGold/30 text-center animate-fade-in">
+                        <p class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold mb-1">Estimated Base Rate</p>
+                        <p class="text-3xl font-black text-brandGold font-mono" id="quote-price">£0.00</p>
+                        <p class="text-[10px] text-zinc-500 mt-2">Rates calculated via traffic distance matrices and payload mass factors.</p>
+                        <button onclick="switchView('contact')" class="mt-4 bg-brandGold text-black font-bold text-xs uppercase tracking-widest px-6 py-2.5 rounded-xl shadow-goldGlow hover:bg-white transition">
+                            Book Shipment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= CAREERS VIEW ================= -->
+        <section id="view-careers" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">Join Miyanky</span>
+                    <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white serif-heading">Active Roles</h2>
+                    <div class="h-[1px] w-12 bg-brandGold mx-auto mt-6"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Role 1 -->
+                    <div class="bg-brandCard/40 backdrop-blur-md p-8 rounded-3xl border border-white/[0.04] shadow-glassShadow flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div>
+                            <span class="bg-brandGold/10 text-brandGold text-[8px] font-bold uppercase px-3 py-1 rounded-full border border-brandGold/20">Operations</span>
+                            <h3 class="text-lg font-bold mt-3 mb-1 text-white">Lead Dispatch Planner</h3>
+                            <p class="text-xs text-zinc-400 font-mono">Location: Midlands Freight Hub | Full-Time</p>
+                        </div>
+                        <button onclick="switchView('contact')" class="bg-brandGold hover:bg-white text-black text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-xl transition">
+                            Apply
+                        </button>
+                    </div>
+
+                    <!-- Role 2 -->
+                    <div class="bg-brandCard/40 backdrop-blur-md p-8 rounded-3xl border border-white/[0.04] shadow-glassShadow flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div>
+                            <span class="bg-brandBlueLight/10 text-brandBlueLight text-[8px] font-bold uppercase px-3 py-1 rounded-full border border-brandBlueLight/20">Driving Force</span>
+                            <h3 class="text-lg font-bold mt-3 mb-1 text-white">Class 1 HGV Driver (Artic)</h3>
+                            <p class="text-xs text-zinc-400 font-mono">Location: Northern Hub (Leeds) | Shift Work</p>
+                        </div>
+                        <button onclick="switchView('contact')" class="bg-brandGold hover:bg-white text-black text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-xl transition">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= INSIGHTS / BLOG VIEW ================= -->
+        <section id="view-blog" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-3">Industry Knowledge</span>
+                    <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white serif-heading">Logistics Insights</h2>
+                    <div class="h-[1px] w-12 bg-brandGold mx-auto mt-6"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Post 1 -->
+                    <article class="bg-brandCard/40 backdrop-blur-md rounded-3xl border border-white/[0.04] shadow-glassShadow overflow-hidden group">
+                        <div class="h-56 w-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=800" alt="Truck" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-8">
+                            <p class="text-[9px] text-brandGold font-extrabold uppercase font-mono mb-2">Transit Tech | Jan 2026</p>
+                            <h3 class="text-lg font-bold mb-3 text-white">Overcoming UK Road Congestion via Real-Time Routing</h3>
+                            <p class="text-zinc-400 text-xs leading-relaxed mb-6">How our advanced route calculation tools bypass regional delays and optimize Same-Day Express collection times.</p>
+                            <span class="text-brandGold font-bold text-xs uppercase tracking-wider">Read Full Article ➔</span>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="bg-brandCard/40 backdrop-blur-md rounded-3xl border border-white/[0.04] shadow-glassShadow overflow-hidden group">
+                        <div class="h-56 w-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="Warehouse inside" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-8">
+                            <p class="text-[9px] text-brandGold font-extrabold uppercase font-mono mb-2">Supply Chain | Dec 2025</p>
+                            <h3 class="text-lg font-bold mb-3 text-white">Maximizing 3PL Warehouse space during Peak Retail Windows</h3>
+                            <p class="text-zinc-400 text-xs leading-relaxed mb-6">Analyzing strategic pick-pack methodologies to speed up order processing times and manage commercial overflows.</p>
+                            <span class="text-brandGold font-bold text-xs uppercase tracking-wider">Read Full Article ➔</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= CONTACT VIEW ================= -->
+        <section id="view-contact" class="view-section py-28 bg-transparent relative z-10">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4 space-y-6">
+                    <div>
+                        <span class="text-brandGold font-bold uppercase tracking-[0.25em] text-[9px] block mb-2">Miyanky Logistics Ltd</span>
+                        <h1 class="text-3xl font-extrabold text-white serif-heading">Connect with Dispatch</h1>
+                        <p class="text-zinc-400 text-xs leading-relaxed mt-2">Submit cargo specifications or request contract rates directly through our team.</p>
+                    </div>
+
+                    <div class="space-y-4 text-xs font-medium text-zinc-300 font-mono">
+                        <p>Office: <span class="text-white font-bold">EC1A, Greater London</span></p>
+                        <p>Dispatch Line: <a href="tel:+440000000000" class="text-brandGold font-bold">+44 (0) 0000 000000</a></p>
+                        <p>Operations Email: <a href="mailto:info@miyankylogistics.co.uk" class="text-brandGold font-bold">info@miyankylogistics.co.uk</a></p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8">
+                    <div class="bg-brandCard/40 backdrop-blur-md p-8 rounded-3xl border border-white/[0.04] shadow-glassShadow">
+                        <form onsubmit="handleFormSubmit(event)" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Your Name *</label>
+                                    <input type="text" required class="w-full bg-black/20 border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandGold transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Company Name (Optional)</label>
+                                    <input type="text" class="w-full bg-black/20 border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandGold transition">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Email Address *</label>
+                                <input type="email" required class="w-full bg-black/20 border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandGold transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Message *</label>
+                                <textarea rows="4" required class="w-full bg-black/20 border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandGold transition"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brandGold hover:bg-white text-black font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition">
+                                Dispatch Message
+                            </button>
+                        </form>
+                        <div id="contact-success" class="hidden mt-4 p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-xl text-center text-xs">
+                            Message received. Our dispatcher desk will contact you shortly.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Glowing multi-color divider line before footer -->
+    <div class="h-[1px] w-full bg-gradient-to-r from-brandGold via-brandBlueLight to-brandGold"></div>
+
+    <!-- Muted Dark Premium Footer -->
+    <footer class="bg-brandDark text-zinc-400 py-20 mt-auto z-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <img src="images/logo.jpeg" alt="Logo" class="h-10 w-auto mb-6 object-contain bg-white/5 p-2 rounded-xl">
+                <p class="text-xs leading-relaxed text-zinc-400 font-light">Providing dependable freight forwarding and courier delivery services across the United Kingdom.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-6 text-xs uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-3 text-xs">
+                    <li><a href="#" onclick="switchView('home')" class="hover:text-brandGold transition-colors">Home</a></li>
+                    <li><a href="#" onclick="switchView('about')" class="hover:text-brandGold transition-colors">About Us</a></li>
+                    <li><a href="#" onclick="switchView('services')" class="hover:text-brandGold transition-colors">Services</a></li>
+                    <li><a href="#" onclick="switchView('tracking')" class="hover:text-brandGold transition-colors">Tracking</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-6 text-xs uppercase tracking-wider">Hours & Operations</h4>
+                <p class="text-xs mb-3 text-zinc-400">Service Area: United Kingdom</p>
+                <p class="text-xs mb-1">Mon - Fri: 8:00 AM – 6:00 PM</p>
+                <p class="text-xs">Saturday: 9:00 AM – 2:00 PM</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[10px] mt-16 pt-8 border-t border-white/[0.05]">
+            &copy; 2026 Miyanky Logistics Ltd. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Interactive Navigation and Terminal Scripts -->
+    <script>
+        // SPA View Router Script
+        function switchView(viewId) {
+            // Close mobile menu automatically
+            document.getElementById('mobile-menu').classList.add('hidden');
+            document.getElementById('menu-icon').setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+
+            // Hide all views
+            const views = document.querySelectorAll('.view-section');
+            views.forEach(view => {
+                view.classList.remove('active-view');
+            });
+
+            // Show current view
+            const activeView = document.getElementById(`view-${viewId}`);
+            if (activeView) {
+                activeView.classList.add('active-view');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update navigation pill background states
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.className = "nav-link text-zinc-300 hover:text-brandGold px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300";
+            });
+
+            // Find current trigger
+            const currentTrigger = Array.from(links).find(el => el.textContent.toLowerCase().includes(viewId === 'blog' ? 'insight' : viewId));
+            if (currentTrigger) {
+                currentTrigger.className = "nav-link text-black bg-brandGold px-5 py-2.5 rounded-full font-bold text-xs tracking-wider uppercase shadow-sm transition-all duration-300";
+            }
+        }
+
+        // Live Telemetry Tracker function
+        function handleTrack() {
+            const val = document.getElementById('track-input').value.trim();
+            const results = document.getElementById('track-results');
+            const error = document.getElementById('track-error');
+
+            if (val.toUpperCase() === 'MYK-UK-2026') {
+                results.classList.remove('hidden');
+                error.classList.add('hidden');
+            } else {
+                results.classList.add('hidden');
+                error.classList.remove('hidden');
+            }
+        }
+
+        // Instant Quote Calculation algorithm
+        function calculateQuote(e) {
+            e.preventDefault();
+            const service = document.getElementById('quote-service').value;
+            const weight = parseFloat(document.getElementById('quote-weight').value);
+            const results = document.getElementById('quote-results');
+            const priceEl = document.getElementById('quote-price');
+
+            let base = 25.00;
+            let multiplier = 1.0;
+
+            if (service === 'sameday') {
+                base = 75.00;
+                multiplier = 1.5;
+            } else if (service === 'nextday') {
+                base = 35.00;
+                multiplier = 1.1;
+            } else {
+                base = 50.00;
+                multiplier = 0.9;
+            }
+
+            const calculatedPrice = (base + (weight * 0.45)) * multiplier;
+            priceEl.textContent = `£${calculatedPrice.toFixed(2)}`;
+            results.classList.remove('hidden');
+        }
+
+        // Contact Form handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contact-success').classList.remove('hidden');
+            e.target.reset();
+        }
+
+        // Force Video Autoplay Fallback (Chrome/Safari)
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('hero-video');
+            if (video) {
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        const playOnInteraction = () => {
+                            video.play();
+                            document.removeEventListener('click', playOnInteraction);
+                            document.removeEventListener('touchstart', playOnInteraction);
+                        };
+                        document.addEventListener('click', playOnInteraction);
+                        document.addEventListener('touchstart', playOnInteraction);
+                    });
+                }
+            }
+        });
+
+        // Mobile menu toggle controller
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        btn.addEventListener('click', () => {
+            const isHidden = menu.classList.toggle('hidden');
+            if (!isHidden) {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            } else {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+            }
+        });
+    </script>
+</body>
+</html>
