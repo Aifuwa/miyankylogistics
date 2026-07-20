@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Our Dispatch - Miyanky Logistics Ltd</title>
+    <link rel="icon" type="image/png" href="images/favicon_io/tab.png">
+    
+    <!-- Tailwind CSS CDN with Enhanced Custom Theme Settings -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#2563eb', 
+                        brandBlueLight: '#3b82f6', 
+                        brandGold: '#f59e0b', 
+                        brandGoldHover: '#d97706',
+                        brandPurple: '#8b5cf6', 
+                        brandPink: '#ec4899', 
+                        brandTeal: '#0d9488', 
+                        brandTextDark: '#0f172a', 
+                        brandBgLight: '#f8fafc',
+                    },
+                    boxShadow: {
+                        neonBlue: '0 0 20px rgba(37, 99, 235, 0.25), 0 10px 30px -5px rgba(37, 99, 235, 0.35)',
+                        neonPurple: '0 0 20px rgba(139, 92, 246, 0.25), 0 10px 30px -5px rgba(139, 92, 246, 0.35)',
+                        neonPink: '0 0 20px rgba(236, 72, 153, 0.25), 0 10px 30px -5px rgba(236, 72, 153, 0.35)',
+                        neonGold: '0 0 20px rgba(245, 158, 11, 0.25), 0 10px 30px -5px rgba(245, 158, 11, 0.35)',
+                        neonTeal: '0 0 20px rgba(13, 148, 136, 0.25), 0 10px 30px -5px rgba(13, 148, 136, 0.35)',
+                        glassShadow: '0 20px 50px -10px rgba(15, 23, 42, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: radial-gradient(at 0% 0%, rgba(240, 244, 255, 0.8) 0, transparent 50%),
+                        radial-gradient(at 50% 0%, rgba(250, 232, 255, 0.8) 0, transparent 50%),
+                        radial-gradient(at 100% 0%, rgba(254, 243, 199, 0.7) 0, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(204, 251, 241, 0.8) 0, transparent 50%),
+                        radial-gradient(at 0% 100%, rgba(245, 239, 255, 0.8) 0, transparent 50%),
+                        #f8fafc;
+            background-attachment: fixed;
+        }
+        .serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Continuous Ambient Glowing Blobs */
+        .animated-blob {
+            filter: blur(140px);
+            mix-blend-mode: multiply;
+            animation: blob-float 12s infinite ease-in-out alternate;
+            will-change: transform;
+        }
+        @keyframes blob-float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, -40px) scale(1.15); }
+            100% { transform: translate(-40px, 50px) scale(0.9); }
+        }
+    </style>
+</head>
+<body class="text-brandTextDark flex flex-col min-h-screen overflow-x-hidden selection:bg-brandPurple selection:text-white">
+
+    <!-- Background Art (Luminous Floating Fluid Blobs) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="animated-blob absolute top-10 left-10 w-96 h-96 rounded-full bg-brandBlue/15"></div>
+        <div class="animated-blob absolute top-[40%] right-20 w-[450px] h-[450px] rounded-full bg-brandPurple/10 [animation-delay:2s]"></div>
+        <div class="animated-blob absolute bottom-10 left-[25%] w-[500px] h-[500px] rounded-full bg-brandPink/15 [animation-delay:4s]"></div>
+        <div class="animated-blob absolute bottom-40 right-10 w-[400px] h-[400px] rounded-full bg-brandTeal/10 [animation-delay:6s]"></div>
+    </div>
+
+    <!-- Dynamic Transparent Header Capsule -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white/70 backdrop-blur-md border border-white/40 shadow-glassShadow rounded-3xl h-20 md:h-24 px-6 flex items-center justify-between">
+                
+                <!-- Logo brand capsule -->
+                <a href="index.html" class="flex items-center gap-3 bg-gradient-to-r from-brandBlue/10 to-brandPurple/10 px-4 py-2 rounded-2xl border border-brandBlue/20 transition-all hover:scale-[1.02]">
+                    <img src="images/logo.jpeg" alt="Miyanky Logistics Logo" class="h-8 w-auto object-contain rounded-lg">
+                    <span class="font-extrabold text-sm tracking-wide bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink bg-clip-text text-transparent">Miyanky Logistics</span>
+                </a>
+                
+                <!-- Mobile Navigation Button -->
+                <button id="menu-btn" class="md:hidden text-brandBlue bg-slate-100/80 p-2.5 rounded-xl border border-slate-200 focus:outline-none hover:text-brandGold transition" aria-label="Toggle Menu">
+                    <svg id="menu-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+
+                <!-- Desktop Capsule Navigation Links -->
+                <nav class="hidden md:flex items-center gap-1.5 bg-slate-100/50 p-1.5 rounded-full border border-slate-200/50" id="desktop-nav">
+                    <a href="index.html" class="nav-link text-slate-600 hover:text-brandPurple px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">Home</a>
+                    <a href="about.html" class="nav-link text-slate-600 hover:text-brandPurple px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">About Us</a>
+                    <a href="services.html" class="nav-link text-slate-600 hover:text-brandTeal px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">Services</a>
+                    <a href="contact.html" class="nav-link text-white bg-gradient-to-r from-brandBlue to-brandPurple px-5 py-2.5 rounded-full font-bold text-xs tracking-wider uppercase transition shadow-md">Contact</a>
+                    <a href="quote.html" class="bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink text-white px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 ml-3 shadow-neonBlue hover:shadow-neonPink hover:scale-105">
+                        Get a Quote
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer (Glassmorphic) -->
+        <div id="mobile-menu" class="hidden md:hidden mx-4 mt-3 bg-white/95 border border-brandPurple/20 rounded-3xl px-6 py-6 space-y-3 shadow-premiumShadow backdrop-blur-2xl">
+            <a href="index.html" class="block w-full text-left text-brandBlue font-extrabold text-sm py-2">Home</a>
+            <a href="about.html" class="block w-full text-left text-slate-600 hover:text-brandPurple text-sm font-semibold py-2">About Us</a>
+            <a href="services.html" class="block w-full text-left text-slate-600 hover:text-brandTeal text-sm font-semibold py-2">Services</a>
+            <a href="contact.html" class="block w-full text-left text-slate-600 hover:text-brandPink text-sm font-semibold py-2">Contact</a>
+            <hr class="border-slate-100 my-4">
+            <a href="quote.html" class="block w-full text-center bg-gradient-to-r from-brandBlue to-brandPurple text-white py-3 rounded-xl font-bold tracking-wider uppercase text-xs shadow-neonBlue">Get a Quote</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow pt-32 relative z-10 overflow-hidden pb-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+            
+            <div class="lg:col-span-4 space-y-6 flex flex-col justify-between">
+                <div>
+                    <span class="text-brandPink font-extrabold uppercase tracking-[0.2em] text-[10px] block mb-2">Miyanky Logistics Ltd</span>
+                    <h1 class="text-3xl font-extrabold text-brandTextDark">Connect with Our Dispatch</h1>
+                    <p class="text-slate-600 text-xs leading-relaxed mt-2 font-normal">Our team is on standby to coordinate schedules, handle transport allocations, or assist with queries.</p>
+                </div>
+
+                <!-- Contact Information Blocks -->
+                <div class="space-y-4 text-xs font-semibold text-white">
+                    
+                    <!-- Service Area -->
+                    <div class="bg-gradient-to-r from-brandBlue to-blue-700 p-5 rounded-2xl border border-blue-400 flex items-center gap-4 shadow-md">
+                        <span class="text-2xl">📍</span>
+                        <div>
+                            <p class="text-[10px] text-blue-200 uppercase">Service Area</p>
+                            <p class="text-white font-extrabold">United Kingdom (Nationwide Operations)</p>
+                        </div>
+                    </div>
+
+                    <!-- Business Hours -->
+                    <div class="bg-gradient-to-r from-brandPurple to-indigo-700 p-5 rounded-2xl border border-purple-400 flex items-center gap-4 shadow-md">
+                        <span class="text-2xl">🕒</span>
+                        <div>
+                            <p class="text-[10px] text-purple-200 uppercase font-mono">Business Hours</p>
+                            <p class="text-white font-extrabold">Mon - Fri: 8am - 6pm | Sat: 9am - 2pm</p>
+                        </div>
+                    </div>
+
+                    <!-- Dispatch Email -->
+                    <div class="bg-gradient-to-r from-brandTeal to-emerald-700 p-5 rounded-2xl border border-teal-400 flex items-center gap-4 shadow-md">
+                        <span class="text-2xl">✉</span>
+                        <div>
+                            <p class="text-[10px] text-teal-200 uppercase">Dispatch Email</p>
+                            <a href="mailto:info@miyankylogistics.co.uk" class="text-white block hover:underline">info@miyankylogistics.co.uk</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Form Wrapper Card -->
+            <div class="lg:col-span-8">
+                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-xl relative">
+                    <div class="absolute top-0 right-1/4 w-32 h-1 bg-gradient-to-r from-brandPurple to-brandTeal"></div>
+                    
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-6" id="contact-form">
+                        <input type="hidden" name="access_key" value="82daf97e-3252-40c3-af28-f540a7d3af60">
+                        <input type="hidden" name="subject" value="New Contact Inquiry from Miyanky Logistics website">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Your Name *</label>
+                                <input type="text" name="Sender Name" required class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 py-3.5 text-sm focus:outline-none focus:border-brandPurple transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Company Name (Optional)</label>
+                                <input type="text" name="Company Name" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 py-3.5 text-sm focus:outline-none focus:border-brandPurple transition">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Email Address *</label>
+                            <input type="email" name="Email Address" required class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 py-3.5 text-sm focus:outline-none focus:border-brandPurple transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Message *</label>
+                            <textarea name="Message Details" rows="4" required class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 py-3.5 text-sm focus:outline-none focus:border-brandPurple transition" placeholder="Let us know how we can handle your logistics needs..."></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-brandPurple to-brandPink hover:from-brandPink hover:to-brandPurple text-white font-extrabold py-4.5 rounded-2xl text-xs uppercase tracking-widest transition shadow-glowPurple">
+                            Dispatch Message to Desk
+                        </button>
+                    </form>
+                    <div id="contact-success" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-600 rounded-2xl text-center text-xs font-bold shadow-sm">
+                        ✔ Message received. Our dispatch office will reply directly to your email shortly.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Muted Modern Footer with Gradient backing -->
+    <footer class="bg-gradient-to-b from-slate-950 to-indigo-950 text-slate-400 py-16 z-20 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <div class="inline-flex items-center gap-3 bg-white/10 p-3 rounded-2xl border border-white/25 mb-6">
+                    <img src="images/logo.jpeg" alt="Logo" class="h-8 w-auto object-contain rounded-lg">
+                    <span class="text-white font-extrabold text-xs tracking-wide bg-gradient-to-r from-brandBlueLight to-brandPink bg-clip-text text-transparent">Miyanky Logistics</span>
+                </div>
+                <p class="text-xs leading-relaxed text-slate-400 font-normal">Providing dependable freight forwarding and courier delivery services across the United Kingdom.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-xs uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-3 text-xs">
+                    <li><a href="index.html" class="hover:text-brandGold transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brandPurple transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brandTeal transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-brandPink transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-xs uppercase tracking-wider">Hours & Operations</h4>
+                <p class="text-xs mb-3 text-slate-400">Service Area: United Kingdom</p>
+                <p class="text-xs mb-1">Mon - Fri: 8:00 AM – 6:00 PM</p>
+                <p class="text-xs">Saturday: 9:00 AM – 2:00 PM</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[10px] mt-16 pt-8 border-t border-white/10">
+            &copy; 2026 Miyanky Logistics Ltd. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Mobile Drawer Toggle Script & Async Form Submission -->
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        btn.addEventListener('click', () => {
+            const isHidden = menu.classList.toggle('hidden');
+            if (!isHidden) {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                menuIcon.classList.add('rotate-90');
+            } else {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+                menuIcon.classList.remove('rotate-90');
+            }
+        });
+
+        // Async Form Submission Handler
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.textContent = "Forwarding to Dispatch...";
+            submitBtn.disabled = true;
+
+            const form = document.getElementById('contact-form');
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                });
+                
+                if (response.status === 200) {
+                    document.getElementById('contact-success').classList.remove('hidden');
+                    form.reset();
+                } else {
+                    alert("Submission encountered an issue. Please contact info@miyankylogistics.co.uk directly.");
+                }
+            } catch (error) {
+                console.log(error);
+                alert("Connection error. Please submit details manually to info@miyankylogistics.co.uk");
+            } finally {
+                submitBtn.textContent = "Dispatch Message to Desk";
+                submitBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

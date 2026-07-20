@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Miyanky Logistics Ltd</title>
+    <link rel="icon" type="image/png" href="images/favicon_io/tab.png">
+    
+    <!-- Tailwind CSS CDN with Custom Theme Settings -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#2563eb', 
+                        brandBlueLight: '#3b82f6', 
+                        brandGold: '#f59e0b', 
+                        brandGoldHover: '#d97706',
+                        brandPurple: '#8b5cf6', 
+                        brandPink: '#ec4899', 
+                        brandTeal: '#0d9488', 
+                        brandTextDark: '#0f172a', 
+                        brandBgLight: '#f8fafc',
+                    },
+                    boxShadow: {
+                        neonBlue: '0 0 20px rgba(37, 99, 235, 0.25), 0 10px 30px -5px rgba(37, 99, 235, 0.35)',
+                        neonPurple: '0 0 20px rgba(139, 92, 246, 0.25), 0 10px 30px -5px rgba(139, 92, 246, 0.35)',
+                        neonPink: '0 0 20px rgba(236, 72, 153, 0.25), 0 10px 30px -5px rgba(236, 72, 153, 0.35)',
+                        neonGold: '0 0 20px rgba(245, 158, 11, 0.25), 0 10px 30px -5px rgba(245, 158, 11, 0.35)',
+                        neonTeal: '0 0 20px rgba(13, 148, 136, 0.25), 0 10px 30px -5px rgba(13, 148, 136, 0.35)',
+                        glassShadow: '0 20px 50px -10px rgba(15, 23, 42, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: radial-gradient(at 0% 0%, rgba(240, 244, 255, 0.8) 0, transparent 50%),
+                        radial-gradient(at 50% 0%, rgba(250, 232, 255, 0.8) 0, transparent 50%),
+                        radial-gradient(at 100% 0%, rgba(254, 243, 199, 0.7) 0, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(204, 251, 241, 0.8) 0, transparent 50%),
+                        radial-gradient(at 0% 100%, rgba(245, 239, 255, 0.8) 0, transparent 50%),
+                        #f8fafc;
+            background-attachment: fixed;
+        }
+        .serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Continuous Ambient Glowing Blobs */
+        .animated-blob {
+            filter: blur(140px);
+            mix-blend-mode: multiply;
+            animation: blob-float 12s infinite ease-in-out alternate;
+            will-change: transform;
+        }
+        @keyframes blob-float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, -40px) scale(1.15); }
+            100% { transform: translate(-40px, 50px) scale(0.9); }
+        }
+
+        /* Modern Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="text-brandTextDark flex flex-col min-h-screen overflow-x-hidden selection:bg-brandPurple selection:text-white">
+
+    <!-- Background Art (Luminous Floating Fluid Blobs) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="animated-blob absolute top-10 left-10 w-96 h-96 rounded-full bg-brandBlue/15"></div>
+        <div class="animated-blob absolute top-[40%] right-20 w-[450px] h-[450px] rounded-full bg-brandPurple/10 [animation-delay:2s]"></div>
+        <div class="animated-blob absolute bottom-10 left-[25%] w-[500px] h-[500px] rounded-full bg-brandPink/15 [animation-delay:4s]"></div>
+        <div class="animated-blob absolute bottom-40 right-10 w-[400px] h-[400px] rounded-full bg-brandTeal/10 [animation-delay:6s]"></div>
+    </div>
+
+    <!-- Dynamic Transparent Header Capsule -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white/70 backdrop-blur-md border border-white/40 shadow-glassShadow rounded-3xl h-20 md:h-24 px-6 flex items-center justify-between">
+                
+                <!-- Logo brand capsule -->
+                <a href="index.html" class="flex items-center gap-3 bg-gradient-to-r from-brandBlue/10 to-brandPurple/10 px-4 py-2 rounded-2xl border border-brandBlue/20 transition-all hover:scale-[1.02]">
+                    <img src="images/logo.jpeg" alt="Miyanky Logistics Logo" class="h-8 w-auto object-contain rounded-lg">
+                    <span class="font-extrabold text-sm tracking-wide bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink bg-clip-text text-transparent">Miyanky Logistics</span>
+                </a>
+                
+                <!-- Mobile Navigation Button -->
+                <button id="menu-btn" class="md:hidden text-brandBlue bg-slate-100/80 p-2.5 rounded-xl border border-slate-200 focus:outline-none hover:text-brandGold transition" aria-label="Toggle Menu">
+                    <svg id="menu-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+
+                <!-- Desktop Capsule Navigation Links -->
+                <nav class="hidden md:flex items-center gap-1.5 bg-slate-100/50 p-1.5 rounded-full border border-slate-200/50" id="desktop-nav">
+                    <a href="index.html" class="nav-link text-slate-600 hover:text-brandPurple px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">Home</a>
+                    <a href="about.html" class="nav-link text-white bg-gradient-to-r from-brandBlue to-brandPurple px-5 py-2.5 rounded-full font-bold text-xs tracking-wider uppercase transition shadow-md">About Us</a>
+                    <a href="services.html" class="nav-link text-slate-600 hover:text-brandTeal px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">Services</a>
+                    <a href="contact.html" class="nav-link text-slate-600 hover:text-brandPink px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">Contact</a>
+                    <a href="quote.html" class="bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink text-white px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 ml-3 shadow-neonBlue hover:shadow-neonPink hover:scale-105">
+                        Get a Quote
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer (Glassmorphic) -->
+        <div id="mobile-menu" class="hidden md:hidden mx-4 mt-3 bg-white/95 border border-brandPurple/20 rounded-3xl px-6 py-6 space-y-3 shadow-premiumShadow backdrop-blur-2xl">
+            <a href="index.html" class="block w-full text-left text-brandBlue font-extrabold text-sm py-2">Home</a>
+            <a href="about.html" class="block w-full text-left text-slate-600 hover:text-brandPurple text-sm font-semibold py-2">About Us</a>
+            <a href="services.html" class="block w-full text-left text-slate-600 hover:text-brandTeal text-sm font-semibold py-2">Services</a>
+            <a href="contact.html" class="block w-full text-left text-slate-600 hover:text-brandPink text-sm font-semibold py-2">Contact</a>
+            <hr class="border-slate-100 my-4">
+            <a href="quote.html" class="block w-full text-center bg-gradient-to-r from-brandBlue to-brandPurple text-white py-3 rounded-xl font-bold tracking-wider uppercase text-xs shadow-neonBlue">Get a Quote</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow pt-32 relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Company Mission Block -->
+            <div class="bg-white/80 backdrop-blur-md p-8 md:p-16 rounded-[3rem] border border-brandPurple/30 shadow-premiumShadow relative overflow-hidden">
+                <div class="absolute -top-12 -left-12 w-48 h-48 bg-brandPurple/20 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-brandPink/20 rounded-full blur-2xl"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+                    <div class="space-y-6">
+                        <span class="text-brandPurple font-extrabold uppercase tracking-[0.2em] text-[10px] block mb-2">About Miyanky Logistics Ltd</span>
+                        <h2 class="text-4xl md:text-5xl font-extrabold text-brandTextDark leading-tight mb-6">Our Mission & Foundation</h2>
+                        <p class="text-slate-700 text-sm leading-relaxed mb-6 font-normal">
+                            Miyanky Logistics Ltd is a customer-focused logistics company dedicated to providing dependable transportation and delivery solutions across the UK. Our mission is to simplify logistics by offering reliable, efficient, and cost-effective services tailored to each client's requirements.
+                        </p>
+                        <p class="text-slate-700 text-sm leading-relaxed mb-6 font-normal">
+                            We believe that trust, punctuality, and professionalism are the foundation of excellent logistics. Whether serving businesses or private customers, we work hard to ensure every delivery reaches its destination safely and on schedule. Our goal is to build long-term relationships with our clients by consistently delivering exceptional service.
+                        </p>
+                        <div class="p-6 bg-gradient-to-r from-brandPurple/10 to-brandPink/10 border border-brandPurple/20 rounded-2xl inline-block">
+                            <p class="text-xs font-bold">✓ High-quality cargo networks &middot; Committed to customer satisfaction</p>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-brandPurple to-brandPink rounded-[2rem] blur-xl opacity-30 rotate-3"></div>
+                        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800" alt="Active commercial transport logistics network including ships and freight trucks" class="rounded-[2rem] border border-brandPurple/20 shadow-xl relative z-10 w-full h-96 object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Values Segment -->
+            <div class="mt-20">
+                <div class="text-center mb-16">
+                    <span class="text-brandTeal font-extrabold uppercase tracking-[0.2em] text-[10px] block mb-2">Our Operating DNA</span>
+                    <h3 class="text-3xl font-extrabold text-brandTextDark">Our Core Values</h3>
+                    <div class="h-1.5 w-16 bg-gradient-to-r from-brandTeal to-emerald-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                    <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-brandBlue/10 hover:shadow-neonBlue transition-all text-center">
+                        <div class="text-brandBlue text-3xl mb-4">🏆</div>
+                        <h4 class="font-extrabold text-base text-brandTextDark mb-2">Reliability</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">Always on time, keeping promises across standard and priority contracts.</p>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-brandPurple/10 hover:shadow-neonPurple transition-all text-center">
+                        <div class="text-brandPurple text-3xl mb-4">🤝</div>
+                        <h4 class="font-extrabold text-base text-brandTextDark mb-2">Integrity</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">Honest communication, complete transparency, and secure pricing.</p>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-brandTeal/10 hover:shadow-neonTeal transition-all text-center">
+                        <div class="text-brandTeal text-3xl mb-4">⚡</div>
+                        <h4 class="font-extrabold text-base text-brandTextDark mb-2">Efficiency</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">Optimized route mapping algorithms to decrease transit time.</p>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-brandPink/10 hover:shadow-neonPink transition-all text-center">
+                        <div class="text-brandPink text-3xl mb-4">❤️</div>
+                        <h4 class="font-extrabold text-base text-brandTextDark mb-2">Satisfaction</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">Placing our customer needs at the core of all logistics pathways.</p>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-brandGold/10 hover:shadow-neonGold transition-all text-center">
+                        <div class="text-brandGold text-3xl mb-4">💼</div>
+                        <h4 class="font-extrabold text-base text-brandTextDark mb-2">Professionalism</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">Highly trained operators from dispatch desks to highway cargo drivers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Standards of Compliance Cards -->
+            <div class="my-24">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl font-extrabold text-brandTextDark">Our Standards & Frameworks</h3>
+                    <div class="h-1.5 w-16 bg-gradient-to-r from-brandPurple to-brandPink mx-auto mt-4 rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-gradient-to-br from-brandGold via-amber-500 to-orange-750 text-white p-8 rounded-3xl border border-amber-300 text-center hover:scale-[1.03] hover:shadow-neonGold transition duration-300">
+                        <span class="text-white text-xl font-extrabold block mb-3 font-mono">FORS Gold</span>
+                        <p class="text-amber-50 text-xs leading-relaxed font-normal">Fleet Operator Recognition Scheme standard verifying outstanding environmental, safety, and operational standards.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-brandBlue via-blue-600 to-indigo-850 text-white p-8 rounded-3xl border border-blue-400 text-center hover:scale-[1.03] hover:shadow-neonBlue transition duration-300">
+                        <span class="text-white font-extrabold text-xl block mb-3 font-mono">ISO 9001</span>
+                        <p class="text-blue-50 text-xs leading-relaxed font-normal font-sans">Certified quality management protocol guaranteeing consistent performance control across all dispatch desks.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-brandTeal via-teal-600 to-emerald-850 text-white p-8 rounded-3xl border border-teal-300 text-center hover:scale-[1.03] hover:shadow-neonTeal transition duration-300">
+                        <span class="text-white text-lg font-extrabold block mb-3 font-mono">ADR Compliant</span>
+                        <p class="text-teal-50 text-xs leading-relaxed font-normal">Our drivers are fully ADR certified to safely handle and transport designated hazardous goods.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-brandPink via-pink-600 to-rose-850 text-white p-8 rounded-3xl border border-pink-400 text-center hover:scale-[1.03] hover:shadow-neonPink transition duration-300">
+                        <span class="text-white font-extrabold text-xl block mb-3 font-mono">BIFA Member</span>
+                        <p class="text-pink-50 text-xs leading-relaxed font-normal">Proud members of the British International Freight Association, aligning with high-standard trading terms.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Multi-color glowing bar divider -->
+    <div class="h-2 w-full bg-gradient-to-r from-brandBlue via-brandPurple via-brandPink to-brandTeal"></div>
+
+    <!-- Muted Modern Footer with Gradient backing -->
+    <footer class="bg-gradient-to-b from-slate-950 to-indigo-950 text-slate-400 py-16 z-20 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <div class="inline-flex items-center gap-3 bg-white/10 p-3 rounded-2xl border border-white/25 mb-6">
+                    <img src="images/logo.jpeg" alt="Logo" class="h-8 w-auto object-contain rounded-lg">
+                    <span class="text-white font-extrabold text-xs tracking-wide bg-gradient-to-r from-brandBlueLight to-brandPink bg-clip-text text-transparent">Miyanky Logistics</span>
+                </div>
+                <p class="text-xs leading-relaxed text-slate-400 font-normal">Providing dependable freight forwarding and courier delivery services across the United Kingdom.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-xs uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-3 text-xs">
+                    <li><a href="index.html" class="hover:text-brandGold transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brandPurple transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brandTeal transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-brandPink transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-xs uppercase tracking-wider">Hours & Operations</h4>
+                <p class="text-xs mb-3 text-slate-400">Service Area: United Kingdom</p>
+                <p class="text-xs mb-1">Mon - Fri: 8:00 AM – 6:00 PM</p>
+                <p class="text-xs">Saturday: 9:00 AM – 2:00 PM</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[10px] mt-16 pt-8 border-t border-white/10">
+            &copy; 2026 Miyanky Logistics Ltd. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Mobile Drawer Toggle Script -->
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        btn.addEventListener('click', () => {
+            const isHidden = menu.classList.toggle('hidden');
+            if (!isHidden) {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                menuIcon.classList.add('rotate-90');
+            } else {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+                menuIcon.classList.remove('rotate-90');
+            }
+        });
+    </script>
+</body>
+</html>

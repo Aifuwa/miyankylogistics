@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miyanky Logistics Ltd - UK Premium Transport & Freight</title>
     
-    <!-- Tailwind CSS CDN with Enhanced Custom Theme Settings -->
+    <!-- Browser Tab Favicon Link -->
+    <link rel="icon" type="image/png" href="images/favicon_io/tab.png">
+    
+    <!-- Tailwind CSS CDN with Custom Theme Settings -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -54,20 +57,6 @@
         }
         .mono-font {
             font-family: 'JetBrains Mono', monospace;
-        }
-        
-        /* Custom dynamic transitions for routing views */
-        .view-section {
-            display: none;
-            opacity: 0;
-            transform: translate3d(0, 20px, 0);
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, opacity;
-        }
-        .view-section.active-view {
-            display: block;
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
         }
 
         /* Continuous Ambient Glowing Blobs */
@@ -121,9 +110,6 @@
 </head>
 <body class="text-brandTextDark flex flex-col min-h-screen overflow-x-hidden selection:bg-brandPurple selection:text-white">
 
-    <!-- Top Loading Indicator (Triggered on Tab Switch) -->
-    <div id="top-loader" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink w-0 z-[60] transition-all duration-300"></div>
-
     <!-- Background Art (Luminous Floating Fluid Blobs) -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div class="animated-blob absolute top-10 left-10 w-96 h-96 rounded-full bg-brandBlue/15"></div>
@@ -133,637 +119,248 @@
     </div>
 
     <!-- Dynamic Transparent Header Capsule -->
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4">
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white/70 backdrop-blur-md border border-white/40 shadow-glassShadow rounded-3xl h-20 md:h-24 px-6 flex items-center justify-between transition-all duration-300">
                 
                 <!-- Logo brand capsule -->
-                <a href="#" onclick="switchView('home')" class="flex items-center gap-3 bg-gradient-to-r from-brandBlue/10 to-brandPurple/10 hover:from-brandBlue/20 hover:to-brandPurple/20 px-4 py-2 rounded-2xl border border-brandBlue/20 transition-all hover:scale-[1.02]">
+                <a href="index.html" class="flex items-center gap-3 bg-gradient-to-r from-brandBlue/10 to-brandPurple/10 px-4 py-2 rounded-2xl border border-brandBlue/20 transition-all hover:scale-[1.02]">
                     <img src="images/logo.jpeg" alt="Miyanky Logistics Logo" class="h-8 w-auto object-contain rounded-lg">
                     <span class="font-extrabold text-sm tracking-wide bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink bg-clip-text text-transparent">Miyanky Logistics</span>
                 </a>
                 
                 <!-- Mobile Navigation Button -->
                 <button id="menu-btn" class="md:hidden text-brandBlue bg-slate-100/80 p-2.5 rounded-xl border border-slate-200 focus:outline-none hover:text-brandGold transition" aria-label="Toggle Menu">
-                    <svg id="menu-icon" class="h-5 w-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg id="menu-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
 
                 <!-- Desktop Capsule Navigation Links -->
                 <nav class="hidden md:flex items-center gap-1.5 bg-slate-100/50 p-1.5 rounded-full border border-slate-200/50" id="desktop-nav">
-                    <button onclick="switchView('home')" data-nav="home" class="nav-link text-white bg-gradient-to-r from-brandBlue to-brandPurple px-5 py-2.5 rounded-full font-bold text-xs tracking-wider uppercase transition shadow-md">Home</button>
-                    <button onclick="switchView('about')" data-nav="about" class="nav-link text-slate-600 hover:text-brandPurple px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">About Us</button>
-                    <button onclick="switchView('services')" data-nav="services" class="nav-link text-slate-600 hover:text-brandTeal px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">Services</button>
-                    <button onclick="switchView('contact')" data-nav="contact" class="nav-link text-slate-600 hover:text-brandPink px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">Contact</button>
-                    <button onclick="switchView('pricing')" class="bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink hover:from-brandBlueLight hover:to-brandPink text-white px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 ml-3 shadow-neonBlue hover:shadow-neonPink hover:scale-105">
+                    <a href="index.html" class="nav-link text-white bg-gradient-to-r from-brandBlue to-brandPurple px-5 py-2.5 rounded-full font-bold text-xs tracking-wider uppercase transition shadow-md">Home</a>
+                    <a href="about.html" class="nav-link text-slate-600 hover:text-brandPurple px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">About Us</a>
+                    <a href="services.html" class="nav-link text-slate-600 hover:text-brandTeal px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">Services</a>
+                    <a href="contact.html" class="nav-link text-slate-600 hover:text-brandPink px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition">Contact</a>
+                    <a href="quote.html" class="bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink text-white px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 ml-3 shadow-neonBlue hover:shadow-neonPink hover:scale-105">
                         Get a Quote
-                    </button>
+                    </a>
                 </nav>
             </div>
         </div>
 
         <!-- Mobile Menu Drawer (Glassmorphic) -->
         <div id="mobile-menu" class="hidden md:hidden mx-4 mt-3 bg-white/95 border border-brandPurple/20 rounded-3xl px-6 py-6 space-y-3 shadow-premiumShadow backdrop-blur-2xl">
-            <button onclick="switchView('home')" class="block w-full text-left text-brandBlue font-extrabold text-sm py-2">Home</button>
-            <button onclick="switchView('about')" class="block w-full text-left text-slate-600 hover:text-brandPurple text-sm font-semibold py-2">About Us</button>
-            <button onclick="switchView('services')" class="block w-full text-left text-slate-600 hover:text-brandTeal text-sm font-semibold py-2">Services</button>
-            <button onclick="switchView('contact')" class="block w-full text-left text-slate-600 hover:text-brandPink text-sm font-semibold py-2">Contact</button>
+            <a href="index.html" class="block w-full text-left text-brandBlue font-extrabold text-sm py-2">Home</a>
+            <a href="about.html" class="block w-full text-left text-slate-600 hover:text-brandPurple text-sm font-semibold py-2">About Us</a>
+            <a href="services.html" class="block w-full text-left text-slate-600 hover:text-brandTeal text-sm font-semibold py-2">Services</a>
+            <a href="contact.html" class="block w-full text-left text-slate-600 hover:text-brandPink text-sm font-semibold py-2">Contact</a>
             <hr class="border-slate-100 my-4">
-            <button onclick="switchView('pricing')" class="block w-full text-center bg-gradient-to-r from-brandBlue to-brandPurple text-white py-3 rounded-xl font-bold tracking-wider uppercase text-xs shadow-neonBlue">Get a Quote</button>
+            <a href="quote.html" class="block w-full text-center bg-gradient-to-r from-brandBlue to-brandPurple text-white py-3 rounded-xl font-bold tracking-wider uppercase text-xs shadow-neonBlue">Get a Quote</a>
         </div>
     </header>
 
-    <!-- Main Dynamic View Container -->
+    <!-- Main Content Area -->
     <main class="flex-grow pt-32 relative z-10 overflow-hidden">
-
-        <!-- ================= HOME VIEW ================= -->
-        <section id="view-home" class="view-section active-view relative">
+        
+        <!-- Video Hero with Transparent, Premium Glass Overlay -->
+        <section class="relative h-[85vh] md:h-screen flex items-center justify-center overflow-hidden bg-slate-950 rounded-b-[3rem] shadow-premiumShadow">
+            <!-- Local MP4 Video Background (Visible and Clear) -->
+            <video id="hero-video" autoplay loop muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-0 opacity-100">
+                <source src="video/hero.mp4" type="video/mp4">
+                <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1600" alt="Freight Truck" class="w-full h-full object-cover">
+            </video>
             
-            <!-- Video Hero with Transparent, Premium Glass Overlay -->
-            <section class="relative h-[85vh] md:h-screen flex items-center justify-center overflow-hidden bg-slate-950 rounded-b-[3rem] shadow-premiumShadow">
-                <!-- Local MP4 Video Background (Visible and Clear) -->
-                <video id="hero-video" autoplay loop muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-0 opacity-100">
-                    <source src="video/hero.mp4" type="video/mp4">
-                    <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1600" alt="Freight Truck" class="w-full h-full object-cover">
-                </video>
-                
-                <!-- Controlled dark masks for rich contrast and high legibility -->
-                <div class="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/20 to-transparent z-10"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent z-10"></div>
-                <div class="absolute inset-0 bg-radial-gradient from-transparent to-slate-950/30 z-10"></div>
+            <!-- Controlled dark masks for rich contrast and high legibility -->
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/20 to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-radial-gradient from-transparent to-slate-950/30 z-10"></div>
 
-                <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-start">
-                    <!-- Ultra-Frosted Transparent Glass Card (High video visibility) -->
-                    <div class="max-w-2xl bg-white/[0.03] backdrop-blur-2xl p-8 md:p-14 rounded-[2.5rem] border border-white/20 shadow-glassShadow text-left transition-all duration-500 hover:border-brandGold/30">
-                        <span class="inline-flex items-center gap-2 text-brandGold font-extrabold uppercase tracking-[0.25em] text-[10px] bg-brandGold/15 border border-brandGold/30 px-4 py-2 rounded-full mb-6">
-                            <span class="w-2 h-2 rounded-full bg-brandGold animate-pulse"></span> Active UK Dispatch Operator
+            <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-start">
+                <!-- Ultra-Frosted Transparent Glass Card (High video visibility) -->
+                <div class="max-w-2xl bg-white/[0.03] backdrop-blur-2xl p-8 md:p-14 rounded-[2.5rem] border border-white/20 shadow-glassShadow text-left transition-all duration-500 hover:border-brandGold/30">
+                    <span class="inline-flex items-center gap-2 text-brandGold font-extrabold uppercase tracking-[0.25em] text-[10px] bg-brandGold/15 border border-brandGold/30 px-4 py-2 rounded-full mb-6">
+                        <span class="w-2 h-2 rounded-full bg-brandGold animate-pulse"></span> Active UK Dispatch Operator
+                    </span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
+                        Smart transport. <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandGold via-white to-brandPink font-bold italic serif-heading">
+                            Absolute security.
                         </span>
-                        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
-                            Smart transport. <br>
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandGold via-white to-brandPink font-bold italic serif-heading">
-                                Absolute security.
-                            </span>
-                        </h1>
-                        <p class="text-xs md:text-sm text-slate-200 mt-4 mb-8 leading-relaxed font-light max-w-lg">
-                            Miyanky Logistics Ltd coordinates high-standard distribution pathways, scheduled freight transport routes, and custom-contract logistics structures to move your cargo across the UK securely.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="#services" class="border-2 border-white/20 hover:border-brandGold/50 hover:bg-brandGold hover:text-slate-950 bg-white/5 text-white px-8 py-4 rounded-2xl font-bold text-xs tracking-wider uppercase transition-all duration-300 text-center flex items-center justify-center gap-2">
-                                Our Services <span>➔</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Scroll Indicator -->
-                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-                    <a href="#stats" class="text-brandGold hover:text-white transition">
-                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                        </svg>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Bright Stats Panel with Glowing Neon Luminous Blocks -->
-            <section id="stats" class="py-16 relative z-10 px-4">
-                <div class="max-w-7xl mx-auto">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        
-                        <!-- Block 1 (Blue) -->
-                        <div class="bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-700 text-white p-8 rounded-3xl shadow-neonBlue hover:scale-105 transition-all duration-300 relative overflow-hidden group">
-                            <div class="absolute -right-6 -bottom-6 text-9xl text-white/5 font-black group-hover:scale-110 transition-transform">99</div>
-                            <p class="text-5xl font-black tracking-tight font-mono">99.8%</p>
-                            <p class="text-[10px] uppercase tracking-[0.2em] text-blue-200 font-bold mt-4">On-Time Accuracy</p>
-                        </div>
-
-                        <!-- Block 2 (Purple) -->
-                        <div class="bg-gradient-to-br from-brandPurple via-fuchsia-600 to-indigo-800 text-white p-8 rounded-3xl shadow-neonPurple hover:scale-105 transition-all duration-300 relative overflow-hidden group">
-                            <div class="absolute -right-6 -bottom-6 text-9xl text-white/5 font-black group-hover:scale-110 transition-transform">24</div>
-                            <p class="text-5xl font-black tracking-tight font-mono">24/7</p>
-                            <p class="text-[10px] uppercase tracking-[0.2em] text-purple-200 font-bold mt-4">Active Dispatch</p>
-                        </div>
-
-                        <!-- Block 3 (Pink) -->
-                        <div class="bg-gradient-to-br from-brandPink via-rose-500 to-red-700 text-white p-8 rounded-3xl shadow-neonPink hover:scale-105 transition-all duration-300 relative overflow-hidden group">
-                            <div class="absolute -right-6 -bottom-6 text-9xl text-white/5 font-black group-hover:scale-110 transition-transform">10</div>
-                            <p class="text-5xl font-black tracking-tight font-mono">10k+</p>
-                            <p class="text-[10px] uppercase tracking-[0.2em] text-pink-200 font-bold mt-4">Loads Transported</p>
-                        </div>
-
-                        <!-- Block 4 (Teal) -->
-                        <div class="bg-gradient-to-br from-brandTeal via-teal-500 to-emerald-700 text-white p-8 rounded-3xl shadow-neonTeal hover:scale-105 transition-all duration-300 relative overflow-hidden group">
-                            <div class="absolute -right-6 -bottom-6 text-9xl text-white/5 font-black group-hover:scale-110 transition-transform">100</div>
-                            <p class="text-5xl font-black tracking-tight font-mono">100%</p>
-                            <p class="text-[10px] uppercase tracking-[0.2em] text-teal-200 font-bold mt-4">UK Main Roads</p>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- Services Section with Individual Backplate Gradients -->
-            <section id="services" class="py-24 relative z-20">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-20 reveal-element">
-                        <span class="text-brandBlue font-extrabold uppercase tracking-[0.25em] text-[10px] block mb-3">Our Operations</span>
-                        <h2 class="text-4xl md:text-5xl font-extrabold text-brandTextDark">Core Logistics Services</h2>
-                        <div class="h-1.5 w-16 bg-gradient-to-r from-brandBlue to-brandPurple mx-auto mt-4 rounded-full"></div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                        
-                        <!-- Service Card 1 (Express Courier - Blue Theme) -->
-                        <div class="gradient-border-card rounded-[2.5rem] overflow-hidden hover:shadow-neonBlue transition-all duration-300 flex flex-col h-full hover:-translate-y-2 group reveal-element">
-                            <div class="h-64 w-full overflow-hidden relative">
-                                <div class="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=800" alt="Courier Parcel" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                                <div class="absolute bottom-6 left-6 z-20 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-xl font-bold text-[10px] text-brandBlue uppercase tracking-widest border border-white/40 shadow-sm">
-                                    Courier Unit
-                                </div>
-                            </div>
-                            <div class="p-8 md:p-10 flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-2xl font-extrabold mb-3 text-brandTextDark group-hover:text-brandBlue transition-colors">Courier Services</h3>
-                                    <p class="text-slate-600 text-sm leading-relaxed font-normal mb-8">Fast and secure collection and delivery of parcels, vital folders, and documents across standard UK corridors.</p>
-                                </div>
-                                <button onclick="switchView('services')" class="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-md hover:shadow-neonBlue transition-all flex items-center justify-center gap-2">
-                                    Specifications <span>➔</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Service Card 2 (Same-Day Express - Purple Theme) -->
-                        <div class="gradient-border-card rounded-[2.5rem] overflow-hidden hover:shadow-neonPurple transition-all duration-300 flex flex-col h-full hover:-translate-y-2 group reveal-element">
-                            <div class="h-64 w-full overflow-hidden relative">
-                                <div class="absolute inset-0 bg-gradient-to-t from-purple-900/60 to-transparent z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?q=80&w=800" alt="Express Van" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                                <div class="absolute bottom-6 left-6 z-20 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-xl font-bold text-[10px] text-brandPurple uppercase tracking-widest border border-white/40 shadow-sm">
-                                    Priority Direct
-                                </div>
-                            </div>
-                            <div class="p-8 md:p-10 flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-2xl font-extrabold mb-3 text-brandTextDark group-hover:text-brandPurple transition-colors">Same-Day Express</h3>
-                                    <p class="text-slate-600 text-sm leading-relaxed font-normal mb-8">Urgent deliveries completed with absolute priority, offering direct-drive transport solutions for time-sensitive cargo.</p>
-                                </div>
-                                <button onclick="switchView('services')" class="w-full py-4 rounded-2xl bg-gradient-to-r from-brandPurple to-indigo-700 text-white font-extrabold text-xs uppercase tracking-wider shadow-md hover:shadow-neonPurple transition-all flex items-center justify-center gap-2">
-                                    Specifications <span>➔</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Service Card 3 (Freight Heavy - Pink Theme) -->
-                        <div class="gradient-border-card rounded-[2.5rem] overflow-hidden hover:shadow-neonPink transition-all duration-300 flex flex-col h-full hover:-translate-y-2 group reveal-element">
-                            <div class="h-64 w-full overflow-hidden relative">
-                                <div class="absolute inset-0 bg-gradient-to-t from-rose-950/60 to-transparent z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800" alt="HGV Rig" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                                <div class="absolute bottom-6 left-6 z-20 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-xl font-bold text-[10px] text-brandPink uppercase tracking-widest border border-white/40 shadow-sm">
-                                    Heavy Load
-                                </div>
-                            </div>
-                            <div class="p-8 md:p-10 flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-2xl font-extrabold mb-3 text-brandTextDark group-hover:text-brandPink transition-colors">Freight & Heavy Cargo</h3>
-                                    <p class="text-slate-600 text-sm leading-relaxed font-normal mb-8">Heavy-duty transport mechanisms to securely move bulk pallets, commercial loads, and large freight payloads.</p>
-                                </div>
-                                <button onclick="switchView('services')" class="w-full py-4 rounded-2xl bg-gradient-to-r from-brandPink to-rose-700 text-white font-extrabold text-xs uppercase tracking-wider shadow-md hover:shadow-neonPink transition-all flex items-center justify-center gap-2">
-                                    Specifications <span>➔</span>
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- Sectors We Support (Highly Colorful Visual Cards with Saturated Fills) -->
-            <section class="py-24 relative z-20 px-4">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-16 reveal-element">
-                        <span class="text-brandPurple font-extrabold uppercase tracking-[0.25em] text-[10px] block mb-3">Targeted Industries</span>
-                        <h2 class="text-4xl font-extrabold text-brandTextDark">Sectors We Support</h2>
-                        <div class="h-1.5 w-16 bg-gradient-to-r from-brandPurple to-brandPink mx-auto mt-4 rounded-full"></div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        
-                        <!-- Sector 1 (Teal Plate) -->
-                        <div class="bg-gradient-to-br from-brandTeal via-teal-600 to-emerald-900 text-white p-8 rounded-[2rem] border border-teal-400 hover:shadow-neonTeal transition-all duration-300 hover:scale-[1.03] flex flex-col justify-between group reveal-element">
-                            <div>
-                                <div class="bg-white/10 w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold mb-6 border border-white/20 group-hover:rotate-12 transition-transform">✈</div>
-                                <h3 class="font-extrabold text-xl mb-2">Aerospace</h3>
-                                <p class="text-teal-100/90 text-xs leading-relaxed font-normal">Direct-drive dispatch for sensitive aviation equipment, critical landing gear components, and assembly line supports.</p>
-                            </div>
-                            <span class="text-xs font-bold text-teal-300 mt-6 block">Prioritized dispatch &middot; 24/7</span>
-                        </div>
-
-                        <!-- Sector 2 (Blue Plate) -->
-                        <div class="bg-gradient-to-br from-brandBlue via-indigo-600 to-blue-950 text-white p-8 rounded-[2rem] border border-blue-400 hover:shadow-neonBlue transition-all duration-300 hover:scale-[1.03] flex flex-col justify-between group reveal-element">
-                            <div>
-                                <div class="bg-white/10 w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold mb-6 border border-white/20 group-hover:rotate-12 transition-transform">💊</div>
-                                <h3 class="font-extrabold text-xl mb-2">Healthcare</h3>
-                                <p class="text-blue-100/90 text-xs leading-relaxed font-normal">Secure document pouches, clinical machinery, and prioritized pharmaceutical materials delivered directly to regional UK hospitals.</p>
-                            </div>
-                            <span class="text-xs font-bold text-blue-300 mt-6 block">Temperature monitored pathing</span>
-                        </div>
-
-                        <!-- Sector 3 (Gold Plate) -->
-                        <div class="bg-gradient-to-br from-brandGold via-amber-600 to-orange-850 text-white p-8 rounded-[2rem] border border-amber-400 hover:shadow-neonGold transition-all duration-300 hover:scale-[1.03] flex flex-col justify-between group reveal-element">
-                            <div>
-                                <div class="bg-white/10 w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold mb-6 border border-white/20 group-hover:rotate-12 transition-transform">🛒</div>
-                                <h3 class="font-extrabold text-xl mb-2">High-Value Retail</h3>
-                                <p class="text-amber-100/90 text-xs leading-relaxed font-normal">Nightly warehousing trunking solutions providing retail shelves with continuous, calculated inventory flow.</p>
-                            </div>
-                            <span class="text-xs font-bold text-amber-200 mt-6 block">Just-In-Time replenishment</span>
-                        </div>
-
-                        <!-- Sector 4 (Pink Plate) -->
-                        <div class="bg-gradient-to-br from-brandPink via-rose-700 to-fuchsia-950 text-white p-8 rounded-[2rem] border border-pink-400 hover:shadow-neonPink transition-all duration-300 hover:scale-[1.03] flex flex-col justify-between group reveal-element">
-                            <div>
-                                <div class="bg-white/10 w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold mb-6 border border-white/20 group-hover:rotate-12 transition-transform">⚙</div>
-                                <h3 class="font-extrabold text-xl mb-2">Automotive</h3>
-                                <p class="text-pink-100/90 text-xs leading-relaxed font-normal">Preventing assembly delays through scheduled next-day heavy chassis and mechanical bulk freight delivery runs.</p>
-                            </div>
-                            <span class="text-xs font-bold text-pink-300 mt-6 block">Line stoppage prevention logistics</span>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- Delivery Workflow Timeline with Multi-color Gradient Progression -->
-            <section class="py-24 relative z-20 px-4">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-16 reveal-element">
-                        <span class="text-brandTeal font-extrabold uppercase tracking-[0.25em] text-[10px] block mb-3">Seamless Pipeline</span>
-                        <h2 class="text-4xl font-extrabold text-brandTextDark">Our Delivery Workflow</h2>
-                        <div class="h-1.5 w-16 bg-gradient-to-r from-brandTeal to-emerald-500 mx-auto mt-4 rounded-full"></div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        
-                        <!-- Step 1 (Cyan-Blue) -->
-                        <div class="bg-gradient-to-br from-cyan-600 via-cyan-500 to-blue-700 text-white border border-cyan-400 p-8 rounded-[2rem] relative shadow-neonBlue hover:scale-105 transition-all duration-300 flex flex-col justify-between h-72 reveal-element">
-                            <span class="text-white/10 text-8xl font-black font-mono absolute top-2 right-4 select-none">01</span>
-                            <div class="w-12 h-12 rounded-2xl bg-white/20 text-white flex items-center justify-center font-bold border border-white/30 text-lg">✓</div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">Request Quote</h3>
-                                <p class="text-cyan-50 text-xs leading-relaxed font-normal">Submit cargo dimensions, specific weight inputs, and destination markers using our secure form.</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Step 2 (Indigo-Purple) -->
-                        <div class="bg-gradient-to-br from-indigo-600 via-indigo-500 to-brandPurple text-white border border-indigo-400 p-8 rounded-[2rem] relative shadow-neonPurple hover:scale-105 transition-all duration-300 flex flex-col justify-between h-72 reveal-element">
-                            <span class="text-white/10 text-8xl font-black font-mono absolute top-2 right-4 select-none">02</span>
-                            <div class="w-12 h-12 rounded-2xl bg-white/20 text-white flex items-center justify-center font-bold border border-white/30 text-lg">⚡</div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">Dispatch Check</h3>
-                                <p class="text-indigo-50 text-xs leading-relaxed font-normal">Our logistics desk verifies transit variables and immediately maps an optimal path.</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Step 3 (Fuchsia-Rose) -->
-                        <div class="bg-gradient-to-br from-fuchsia-600 via-fuchsia-500 to-rose-700 text-white border border-pink-400 p-8 rounded-[2rem] relative shadow-neonPink hover:scale-105 transition-all duration-300 flex flex-col justify-between h-72 reveal-element">
-                            <span class="text-white/10 text-8xl font-black font-mono absolute top-2 right-4 select-none">03</span>
-                            <div class="w-12 h-12 rounded-2xl bg-white/20 text-white flex items-center justify-center font-bold border border-white/30 text-lg">⛟</div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">Secure Transit</h3>
-                                <p class="text-pink-50 text-xs leading-relaxed font-normal">Cargo moves securely through monitored delivery tracks with professional tracking.</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Step 4 (Emerald-Teal) -->
-                        <div class="bg-gradient-to-br from-emerald-600 via-emerald-500 to-brandTeal text-white border border-emerald-400 p-8 rounded-[2rem] relative shadow-neonTeal hover:scale-105 transition-all duration-300 flex flex-col justify-between h-72 reveal-element">
-                            <span class="text-white/10 text-8xl font-black font-mono absolute top-2 right-4 select-none">04</span>
-                            <div class="w-12 h-12 rounded-2xl bg-white/20 text-white flex items-center justify-center font-bold border border-white/30 text-lg">⚙</div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">Proof of Delivery</h3>
-                                <p class="text-emerald-50 text-xs leading-relaxed font-normal">Instant delivery confirmations are processed digitally right upon physical handoff.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-        </section>
-
-
-        <!-- ================= ABOUT US VIEW ================= -->
-        <section id="view-about" class="view-section py-16 bg-transparent relative z-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                
-                <!-- High-vibrancy overview layout card -->
-                <div class="bg-white/80 backdrop-blur-md p-8 md:p-16 rounded-[3rem] border border-brandPurple/30 shadow-premiumShadow relative overflow-hidden">
-                    <div class="absolute -top-12 -left-12 w-48 h-48 bg-brandPurple/20 rounded-full blur-2xl"></div>
-                    <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-brandPink/20 rounded-full blur-2xl"></div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-                        <div>
-                            <span class="text-brandPurple font-extrabold uppercase tracking-[0.2em] text-[10px] block mb-2">Who We Are</span>
-                            <h2 class="text-4xl md:text-5xl font-extrabold text-brandTextDark leading-tight mb-6">Miyanky Logistics Ltd</h2>
-                            <p class="text-slate-700 text-sm leading-relaxed mb-6 font-normal">
-                                Miyanky Logistics Ltd is a customer-focused logistics company dedicated to providing dependable transportation and delivery solutions across the UK. Our mission is to simplify logistics by offering reliable, efficient, and cost-effective services tailored to each client's requirements.
-                            </p>
-                            <p class="text-slate-700 text-sm leading-relaxed mb-6 font-normal">
-                                We believe that trust, punctuality, and professionalism are the foundation of excellent logistics. Whether serving businesses or private customers, we work hard to ensure every delivery reaches its destination safely and on schedule.
-                            </p>
-                            <div class="p-6 bg-gradient-to-r from-brandPurple to-brandPink text-white rounded-2xl inline-block shadow-md">
-                                <p class="text-xs font-bold">✓ High-quality cargo networks &middot; Committed to customer satisfaction</p>
-                            </div>
-                        </div>
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-gradient-to-r from-brandPurple to-brandPink rounded-[2rem] blur-xl opacity-30 rotate-3"></div>
-                            <img src="https://images.unsplash.com/photo-1516575150278-77136aed6920?q=80&w=800" alt="Warehouse operations" class="rounded-[2rem] border-brandPurple/20 shadow-xl relative z-10 w-full h-96 object-cover">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Standards of Compliance Cards -->
-                <div class="mt-24">
-                    <div class="text-center mb-16">
-                        <h3 class="text-3xl font-extrabold text-brandTextDark">Our Standards & Frameworks</h3>
-                        <div class="h-1.5 w-12 bg-brandPurple mx-auto mt-4 rounded-full"></div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        
-                        <!-- Block 1 (Gold) -->
-                        <div class="bg-gradient-to-br from-brandGold via-amber-500 to-orange-750 text-white p-8 rounded-3xl border border-amber-300 text-center hover:scale-[1.03] hover:shadow-neonGold transition duration-300">
-                            <span class="text-white text-xl font-extrabold block mb-3 font-mono">FORS Gold</span>
-                            <p class="text-amber-50 text-xs leading-relaxed font-normal">Fleet Operator Recognition Scheme standard verifying outstanding environmental, safety, and operational standards.</p>
-                        </div>
-                        
-                        <!-- Block 2 (Blue) -->
-                        <div class="bg-gradient-to-br from-brandBlue via-blue-600 to-indigo-850 text-white p-8 rounded-3xl border border-blue-400 text-center hover:scale-[1.03] hover:shadow-neonBlue transition duration-300">
-                            <span class="text-white font-extrabold text-xl block mb-3 font-mono">ISO 9001</span>
-                            <p class="text-blue-50 text-xs leading-relaxed font-normal font-sans">Certified quality management protocol guaranteeing consistent performance control across all dispatch desks.</p>
-                        </div>
-                        
-                        <!-- Block 3 (Teal) -->
-                        <div class="bg-gradient-to-br from-brandTeal via-teal-600 to-emerald-850 text-white p-8 rounded-3xl border border-teal-300 text-center hover:scale-[1.03] hover:shadow-neonTeal transition duration-300">
-                            <span class="text-white text-lg font-extrabold block mb-3 font-mono">ADR Compliant</span>
-                            <p class="text-teal-50 text-xs leading-relaxed font-normal">Our drivers are fully ADR certified to safely handle and transport designated hazardous goods.</p>
-                        </div>
-                        
-                        <!-- Block 4 (Pink) -->
-                        <div class="bg-gradient-to-br from-brandPink via-pink-600 to-rose-850 text-white p-8 rounded-3xl border border-pink-400 text-center hover:scale-[1.03] hover:shadow-neonPink transition duration-300">
-                            <span class="text-white font-extrabold text-xl block mb-3 font-mono">BIFA Member</span>
-                            <p class="text-pink-50 text-xs leading-relaxed font-normal">Proud members of the British International Freight Association, aligning with high-standard trading terms.</p>
-                        </div>
-
+                    </h1>
+                    <p class="text-xs md:text-sm text-zinc-350 mt-4 mb-8 leading-relaxed font-light max-w-lg">
+                        Miyanky Logistics Ltd coordinates high-standard distribution pathways, scheduled freight transport routes, and custom-contract logistics structures to move your cargo across the UK securely.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="services.html" class="border-2 border-white/20 hover:border-brandGold/50 hover:bg-brandGold hover:text-slate-950 bg-white/5 text-white px-8 py-4 rounded-2xl font-bold text-xs tracking-wider uppercase text-center flex items-center justify-center gap-2">
+                            Our Services <span>➔</span>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+                <a href="#stats" class="text-brandGold hover:text-white transition">
+                    <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </a>
+            </div>
         </section>
 
-
-        <!-- ================= SERVICES VIEW ================= -->
-        <section id="view-services" class="view-section py-16 bg-transparent relative z-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                
-                <div class="text-center mb-16">
-                    <span class="text-brandTeal font-extrabold uppercase tracking-[0.25em] text-[10px] block mb-2">Fleet Specifications</span>
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-brandTextDark">Our Active Fleet & Assets</h2>
-                    <div class="h-1.5 w-16 bg-gradient-to-r from-brandTeal to-emerald-500 mx-auto mt-4 rounded-full"></div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Bright Stats Panel with Glowing Neon Luminous Blocks -->
+        <section id="stats" class="py-16 relative z-10 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     
-                    <!-- Fleet Card 1 (Mercedes - Teal) -->
-                    <div class="bg-gradient-to-b from-brandTeal via-teal-700 to-teal-950 text-white border border-teal-400 rounded-[2rem] overflow-hidden hover:shadow-neonTeal transition-all duration-300 flex flex-col justify-between group reveal-element">
-                        <div>
-                            <div class="h-56 w-full overflow-hidden relative">
-                                <div class="absolute inset-0 bg-gradient-to-t from-teal-950/80 to-transparent z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=800" alt="Mercedes Sprinter" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-8">
-                                <div class="flex justify-between items-center mb-4">
-                                    <span class="bg-white text-brandTeal text-[10px] font-extrabold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm">Express Transit</span>
-                                    <span class="text-[9px] text-teal-200 font-mono">[ REG-01 ]</span>
-                                </div>
-                                <h3 class="text-2xl font-bold mb-2">Mercedes Sprinter</h3>
-                                <p class="text-teal-50 text-xs mb-6 leading-relaxed font-normal">Highly responsive transit vehicles suited for urban same-day runs, priority documents, and urgent cargo deliveries.</p>
-                            </div>
-                        </div>
-                        <div class="p-8 pt-0">
-                            <!-- Capacity Indicator Bar -->
-                            <div class="w-full bg-teal-900/50 rounded-full h-2.5 mb-6">
-                                <div class="bg-brandGold h-2.5 rounded-full shadow-neonGold animate-pulse" style="width: 85%"></div>
-                            </div>
-                            <ul class="space-y-3 text-xs text-teal-100 border-t border-teal-800/60 pt-6 font-mono">
-                                <li class="flex justify-between"><span>Payload Limit:</span> <strong class="text-white">1,200 kg</strong></li>
-                                <li class="flex justify-between"><span>Volume Space:</span> <strong class="text-white">14 m³</strong></li>
-                            </ul>
-                        </div>
+                    <!-- Block 1 (Blue) -->
+                    <div class="bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-700 text-white p-8 rounded-3xl shadow-neonBlue hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute -right-6 -bottom-6 text-9xl text-white/5 font-black group-hover:scale-110 transition-transform">99</div>
+                        <p class="text-5xl font-black tracking-tight font-mono">99.8%</p>
+                        <p class="text-[10px] uppercase tracking-[0.2em] text-blue-200 font-bold mt-4">On-Time Accuracy</p>
                     </div>
 
-                    <!-- Fleet Card 2 (Box Truck - Blue) -->
-                    <div class="bg-gradient-to-b from-brandBlue via-blue-600 to-blue-950 text-white border border-blue-400 rounded-[2rem] overflow-hidden hover:shadow-neonBlue transition-all duration-300 flex flex-col justify-between group reveal-element">
-                        <div>
-                            <div class="h-56 w-full overflow-hidden relative">
-                                <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1516575150278-77136aed6920?q=80&w=800" alt="Box Truck" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-8">
-                                <div class="flex justify-between items-center mb-4">
-                                    <span class="bg-white text-brandBlue text-[10px] font-extrabold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm">Midweight Box</span>
-                                    <span class="text-[9px] text-blue-200 font-mono">[ REG-02 ]</span>
-                                </div>
-                                <h3 class="text-2xl font-bold mb-2">7.5T Box Truck</h3>
-                                <p class="text-blue-50 text-xs mb-6 leading-relaxed font-normal">Optimized cargo vehicles featuring integrated hydraulic tail-lifts, designed for structured regional distribution.</p>
-                            </div>
-                        </div>
-                        <div class="p-8 pt-0">
-                            <!-- Capacity Indicator Bar -->
-                            <div class="w-full bg-blue-900/50 rounded-full h-2.5 mb-6">
-                                <div class="bg-brandGold h-2.5 rounded-full shadow-neonGold animate-pulse" style="width: 70%"></div>
-                            </div>
-                            <ul class="space-y-3 text-xs text-blue-100 border-t border-blue-800/60 pt-6 font-mono">
-                                <li class="flex justify-between"><span>Payload Limit:</span> <strong class="text-white">3,000 kg</strong></li>
-                                <li class="flex justify-between"><span>Pallet Capacity:</span> <strong class="text-white">Up to 10 Standard</strong></li>
-                            </ul>
-                        </div>
+                    <!-- Block 2 (Purple) -->
+                    <div class="bg-gradient-to-br from-brandPurple via-fuchsia-600 to-indigo-800 text-white p-8 rounded-3xl shadow-neonPurple hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute -right-6 -bottom-6 text-9xl text-white/5 font-black group-hover:scale-110 transition-transform">24</div>
+                        <p class="text-5xl font-black tracking-tight font-mono">24/7</p>
+                        <p class="text-[10px] uppercase tracking-[0.2em] text-purple-200 font-bold mt-4">Active Dispatch</p>
                     </div>
 
-                    <!-- Fleet Card 3 (44T Rig - Pink) -->
-                    <div class="bg-gradient-to-b from-brandPink via-rose-600 to-rose-950 text-white border border-pink-400 rounded-[2rem] overflow-hidden hover:shadow-neonPink transition-all duration-300 flex flex-col justify-between group reveal-element">
-                        <div>
-                            <div class="h-56 w-full overflow-hidden relative">
-                                <div class="absolute inset-0 bg-gradient-to-t from-rose-950/80 to-transparent z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="Heavy Tractor Truck" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-8">
-                                <div class="flex justify-between items-center mb-4">
-                                    <span class="bg-white text-brandPink text-[10px] font-extrabold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm">Heavy Artic</span>
-                                    <span class="text-[9px] text-pink-200 font-mono">[ REG-03 ]</span>
-                                </div>
-                                <h3 class="text-2xl font-bold mb-2">44-Tonne HGV</h3>
-                                <p class="text-pink-50 text-xs mb-6 font-normal">Full-scale commercial tractor units designated for distribution center logistics and bulk cargo loads.</p>
-                            </div>
-                        </div>
-                        <div class="p-8 pt-0">
-                            <!-- Capacity Indicator Bar -->
-                            <div class="w-full bg-rose-900/50 rounded-full h-2.5 mb-6">
-                                <div class="bg-brandGold h-2.5 rounded-full shadow-neonGold animate-pulse" style="width: 95%"></div>
-                            </div>
-                            <ul class="space-y-3 text-xs text-pink-100 border-t border-rose-800/60 pt-6 font-mono">
-                                <li class="flex justify-between"><span>Payload Limit:</span> <strong class="text-white">28,000 kg</strong></li>
-                                <li class="flex justify-between"><span>Pallet Capacity:</span> <strong class="text-white">Up to 26 Standard</strong></li>
-                            </ul>
-                        </div>
+                    <!-- Block 3 (Pink) -->
+                    <div class="bg-gradient-to-br from-brandPink via-rose-500 to-red-700 text-white p-8 rounded-3xl shadow-neonPink hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute -right-6 -bottom-6 text-9xl text-white/5 font-black group-hover:scale-110 transition-transform">10</div>
+                        <p class="text-5xl font-black tracking-tight font-mono">10k+</p>
+                        <p class="text-[10px] uppercase tracking-[0.2em] text-pink-200 font-bold mt-4">Loads Transported</p>
+                    </div>
+
+                    <!-- Block 4 (Teal) -->
+                    <div class="bg-gradient-to-br from-brandTeal via-teal-500 to-emerald-700 text-white p-8 rounded-3xl shadow-neonTeal hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute -right-6 -bottom-6 text-9xl text-white/5 font-black group-hover:scale-110 transition-transform">100</div>
+                        <p class="text-5xl font-black tracking-tight font-mono">100%</p>
+                        <p class="text-[10px] uppercase tracking-[0.2em] text-teal-200 font-bold mt-4">UK Main Roads</p>
                     </div>
 
                 </div>
             </div>
         </section>
 
+        <!-- Welcome Info & Why Choose Us Section -->
+        <section class="py-20 bg-transparent relative z-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="text-brandBlue font-extrabold uppercase tracking-[0.25em] text-[10px] block">Premium UK Transit</span>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-brandTextDark">Why Choose Miyanky Logistics?</h2>
+                        <p class="text-slate-600 text-sm leading-relaxed font-normal">
+                            We understand that every shipment matters. That's why we focus on reliability, clear communication, and customer satisfaction in everything we do.
+                        </p>
+                        
+                        <!-- List of highlights -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                            <div class="bg-white/80 backdrop-blur-md p-5 rounded-2xl border border-brandBlue/10 shadow-sm flex items-start gap-4">
+                                <span class="text-brandBlue text-xl">⚡</span>
+                                <div>
+                                    <h4 class="font-extrabold text-sm text-brandTextDark">Fast & Reliable</h4>
+                                    <p class="text-slate-500 text-[11px] mt-1">Prompt collection and urgent delivery timelines maintained across our UK corridors.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white/80 backdrop-blur-md p-5 rounded-2xl border border-brandPurple/10 shadow-sm flex items-start gap-4">
+                                <span class="text-brandPurple text-xl">👥</span>
+                                <div>
+                                    <h4 class="font-extrabold text-sm text-brandTextDark">Professional Team</h4>
+                                    <p class="text-slate-500 text-[11px] mt-1">Highly experienced operators, logistics planners, and fully certified drivers.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white/80 backdrop-blur-md p-5 rounded-2xl border border-brandPink/10 shadow-sm flex items-start gap-4">
+                                <span class="text-brandPink text-xl">🏷️</span>
+                                <div>
+                                    <h4 class="font-extrabold text-sm text-brandTextDark">Competitive Pricing</h4>
+                                    <p class="text-slate-500 text-[11px] mt-1">Cost-effective shipping strategies tailored to your exact payload variables.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white/80 backdrop-blur-md p-5 rounded-2xl border border-brandTeal/10 shadow-sm flex items-start gap-4">
+                                <span class="text-brandTeal text-xl">🔒</span>
+                                <div>
+                                    <h4 class="font-extrabold text-sm text-brandTextDark">Safe & Secure</h4>
+                                    <p class="text-slate-500 text-[11px] mt-1">Comprehensive goods-in-transit protections and strict compliance handling.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- ================= ESTIMATE VIEW ================= -->
-        <section id="view-pricing" class="view-section py-16 bg-transparent relative z-10">
-            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                
-                <div class="text-center mb-12">
-                    <span class="text-brandPink font-extrabold uppercase tracking-[0.25em] text-[10px] block mb-2">Estimation Portal</span>
-                    <h2 class="text-4xl font-extrabold text-brandTextDark">Calculate Transport Rates</h2>
+                    <!-- Redesigned Customer Commitment & Launch Promise Card -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-brandBlue to-brandPurple rounded-3xl blur-2xl opacity-20 rotate-3"></div>
+                        <div class="bg-white p-4 rounded-3xl border border-slate-200 shadow-xl relative z-10">
+                            <!-- High-Resolution Active Commercial Logistics Van Photo -->
+                            <img src="https://dc715.4shared.com/img/1JMN_aIIku/s24/19f49271570/eaf99b5f-2503-4572-ac5e-8ed115?async&rand=0.701467200627375" alt="Miyanky Logistics transport fleet van in active service" class="w-full h-96 object-cover rounded-2xl">
+                            
+                            <!-- Premium Service Pledge Glassmorphic Card -->
+                            <div class="absolute bottom-8 left-8 right-8 bg-slate-900/90 backdrop-blur-md text-white p-6 rounded-xl border border-white/10">
+                                <span class="text-[9px] bg-brandGold text-slate-950 font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider inline-block mb-2">Our Quality Pledge</span>
+                                <p class="text-xs leading-relaxed font-normal">"As a newly launched operator, we treat every consignment as our most critical. No call centers, no automated delays&mdash;just direct, professional owner-operated logistics execution."</p>
+                                <p class="text-[10px] text-brandGold uppercase font-bold mt-3 font-mono">&mdash; The Miyanky Dispatch Promise</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direct Dispatch Courier Operations Section (Visual Rider & Transit Vehicle Gallery) -->
+        <section class="py-24 relative z-20 bg-gradient-to-r from-blue-50/50 via-purple-50/50 to-pink-50/50 border-y border-brandPurple/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-brandPink font-extrabold uppercase tracking-[0.25em] text-[10px] block mb-3">On the Move</span>
+                    <h2 class="text-4xl font-extrabold text-brandTextDark">Direct Dispatch Network</h2>
+                    <p class="text-slate-600 text-sm max-w-xl mx-auto mt-2">Our agile ground fleet is deployed across major UK hubs to ensure responsive, safe handovers.</p>
                     <div class="h-1.5 w-16 bg-gradient-to-r from-brandPink to-brandPurple mx-auto mt-4 rounded-full"></div>
                 </div>
 
-                <!-- Interactive glass form wrapper -->
-                <div class="bg-gradient-to-br from-indigo-100/90 via-white/95 to-pink-100/95 p-8 md:p-12 rounded-[2.5rem] border border-brandPurple/30 shadow-premiumShadow relative overflow-hidden">
-                    <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink"></div>
-
-                    <form onsubmit="calculateQuote(event)" class="space-y-6 relative z-10">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Collection Postcode *</label>
-                                <input type="text" id="quote-origin" required placeholder="e.g. EC1A" class="w-full bg-white/90 border-2 border-slate-200/80 rounded-2xl px-5 py-4 text-sm font-semibold focus:outline-none focus:border-brandPurple focus:ring-4 focus:ring-brandPurple/10 transition">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Delivery Postcode *</label>
-                                <input type="text" id="quote-dest" required placeholder="e.g. M1" class="w-full bg-white/90 border-2 border-slate-200/80 rounded-2xl px-5 py-4 text-sm font-semibold focus:outline-none focus:border-brandPurple focus:ring-4 focus:ring-brandPurple/10 transition">
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Rider Element 1: Bike Dispatch -->
+                    <div class="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-slate-200/60 p-6 flex flex-col justify-between hover:shadow-neonBlue hover:scale-[1.02] transition-all duration-300">
+                        <div class="h-48 rounded-2xl overflow-hidden relative mb-6">
+                            <img src="https://dc715.4shared.com/img/1JMN_aIIku/s24/19f49271570/eaf99b5f-2503-4572-ac5e-8ed115?async&rand=0.701467200627375" alt="Actual heavy-duty urban logistics cargo e-bike with transport box" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-brandBlue text-white text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Eco Loop</div>
                         </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">SLA Priority Speed *</label>
-                                <select id="quote-service" class="w-full bg-white/90 border-2 border-slate-200/80 rounded-2xl px-5 py-4 text-sm font-semibold focus:outline-none focus:border-brandPurple focus:ring-4 focus:ring-brandPurple/10 transition">
-                                    <option value="sameday">Same-Day Courier Express (Priority Direct)</option>
-                                    <option value="nextday">Next-Day Shipping (Scheduled Express)</option>
-                                    <option value="interstate">General Cargo Trunking</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Weight (kg) *</label>
-                                <input type="number" id="quote-weight" min="1" required placeholder="e.g. 150" class="w-full bg-white/90 border-2 border-slate-200/80 rounded-2xl px-5 py-4 text-sm font-semibold focus:outline-none focus:border-brandPurple focus:ring-4 focus:ring-brandPurple/10 transition">
-                            </div>
-                        </div>
-
                         <div>
-                            <button type="submit" class="w-full bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink hover:from-brandPurple hover:to-brandPink text-white font-extrabold py-5 rounded-2xl text-xs uppercase tracking-widest transition duration-300 shadow-neonBlue hover:shadow-neonPurple">
-                                Query Pricing Grid
-                            </button>
+                            <h4 class="text-lg font-extrabold text-brandTextDark mb-2">Urban Cargo Bikes</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-normal mb-4">Navigating highly congested city cores with carbon-neutral, zero-emission cargo cycles. Fast delivery for documents and parcels.</p>
                         </div>
-                    </form>
+                        <span class="text-[10px] font-mono text-slate-400">Response time: &lt; 20 Mins</span>
+                    </div>
 
-                    <!-- Interactive output layout (Glow elements) -->
-                    <div id="quote-results" class="hidden mt-8 p-8 bg-gradient-to-br from-brandBlue via-brandPurple to-indigo-900 text-white rounded-[2rem] border border-white/20 text-center animate-fade-in relative overflow-hidden shadow-2xl">
-                        <div class="absolute -top-10 -left-10 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
-                        <p class="text-[10px] text-blue-200 uppercase tracking-widest font-extrabold mb-1">Estimated Base Rate</p>
-                        <p class="text-5xl font-black font-mono text-brandGold" id="quote-price">£0.00</p>
-                        <p class="text-[10px] text-slate-200 mt-2 max-w-md mx-auto leading-relaxed">Rates calculated via transit matrices and payload mass factors. Final pricing is verified by active operator desk checks.</p>
-                        <button onclick="switchView('contact')" class="mt-6 bg-white text-slate-900 font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-brandGold hover:text-white transition shadow-md">
-                            Book This Shipment
-                        </button>
+                    <!-- Rider Element 2: Motorbike courier -->
+                    <div class="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-slate-200/60 p-6 flex flex-col justify-between hover:shadow-neonPurple hover:scale-[1.02] transition-all duration-300">
+                        <div class="h-48 rounded-2xl overflow-hidden relative mb-6">
+                            <img src="https://dc620.4shared.com/img/Bvh3f0fuku/s24/19f49465958/c5ff0c4b-d117-4978-a25b-5b77d7?async&rand=0.727942580779167" alt="Actual commercial logistics delivery motorcycle with rear box" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-brandPurple text-white text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Rapid Dispatch</div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-extrabold text-brandTextDark mb-2">Motorcycle Fleet</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-normal mb-4">Our dedicated motorbike riders specialize in high-speed, point-to-point UK courier runs. Handled with absolute custody.</p>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400">Response time: &lt; 15 Mins</span>
+                    </div>
+
+                    <!-- Rider Element 3: Transit Specialist -->
+                    <div class="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-slate-200/60 p-6 flex flex-col justify-between hover:shadow-neonPink hover:scale-[1.02] transition-all duration-300">
+                        <div class="h-48 rounded-2xl overflow-hidden relative mb-6">
+                            <img src="https://dc620.4shared.com/img/q_eZL3emfa/s24/19f4942bb90/ec816d9e-a1d5-4ebd-b1fd-4f9b9a?async&rand=0.11834523645131512" alt="Actual logistics driver arranging packages inside a commercial transit van" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-brandPink text-white text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Same-Day Cargo</div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-extrabold text-brandTextDark mb-2">Transit Specialist Vans</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed font-normal mb-4">Equipped for direct-drive commercial replenishment. Direct door-to-door handovers with digital proof of delivery.</p>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400">Response time: &lt; 30 Mins</span>
                     </div>
                 </div>
-
             </div>
         </section>
-
-
-        <!-- ================= CONTACT VIEW ================= -->
-        <section id="view-contact" class="view-section py-16 bg-transparent relative z-10">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
-                
-                <div class="lg:col-span-4 space-y-6 flex flex-col justify-between">
-                    <div>
-                        <span class="text-brandPink font-extrabold uppercase tracking-[0.25em] text-[10px] block mb-2">Miyanky Logistics Ltd</span>
-                        <h1 class="text-4xl font-extrabold text-brandTextDark">Connect with Our Dispatch</h1>
-                        <p class="text-slate-600 text-xs leading-relaxed mt-2 font-normal">Submit cargo specifications or request contract logistics rates directly through our desk.</p>
-                    </div>
-
-                    <!-- Vibrant Quick Info Cards -->
-                    <div class="space-y-4 text-xs font-semibold text-white">
-                        
-                        <!-- Headquarters Card -->
-                        <div class="bg-gradient-to-r from-brandBlue to-blue-700 p-6 rounded-2xl border border-blue-400 flex items-center gap-4 shadow-md">
-                            <span class="text-2xl">📍</span>
-                            <div>
-                                <p class="text-[10px] text-blue-200 uppercase">Headquarters</p>
-                                <p class="font-extrabold text-sm">Greater London, United Kingdom</p>
-                            </div>
-                        </div>
-
-                        <!-- Hotline Card -->
-                        <div class="bg-gradient-to-r from-brandPurple to-indigo-700 p-6 rounded-2xl border border-purple-400 flex items-center gap-4 shadow-md">
-                            <span class="text-2xl">📞</span>
-                            <div>
-                                <p class="text-[10px] text-purple-200 uppercase font-mono">Hotline</p>
-                                <p class="font-extrabold text-sm">Available via dispatch lines</p>
-                            </div>
-                        </div>
-
-                        <!-- Email Card -->
-                        <div class="bg-gradient-to-r from-brandTeal to-emerald-700 p-6 rounded-2xl border border-teal-400 flex items-center gap-4 shadow-md">
-                            <span class="text-2xl">✉</span>
-                            <div>
-                                <p class="text-[10px] text-teal-200 uppercase">Enquiries</p>
-                                <p class="font-extrabold text-sm">info@miyankylogistics.co.uk</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Contact form wrapped in double-bordered glass canvas -->
-                <div class="lg:col-span-8">
-                    <div class="bg-gradient-to-br from-white/90 via-purple-50/70 to-blue-50/90 p-8 md:p-12 rounded-[3.5rem] border border-brandPurple/30 shadow-premiumShadow relative">
-                        <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-brandPurple to-brandTeal"></div>
-                        
-                        <form onsubmit="handleFormSubmit(event)" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Your Name *</label>
-                                    <input type="text" required class="w-full bg-white/80 border-2 border-slate-200 rounded-2xl px-4 py-4 text-sm focus:outline-none focus:border-brandPurple focus:ring-4 focus:ring-brandPurple/10 transition">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Company Name</label>
-                                    <input type="text" class="w-full bg-white/80 border-2 border-slate-200 rounded-2xl px-4 py-4 text-sm focus:outline-none focus:border-brandPurple focus:ring-4 focus:ring-brandPurple/10 transition">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Email Address *</label>
-                                <input type="email" required class="w-full bg-white/80 border-2 border-slate-200 rounded-2xl px-4 py-4 text-sm focus:outline-none focus:border-brandPurple focus:ring-4 focus:ring-brandPurple/10 transition">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Message *</label>
-                                <textarea rows="4" required class="w-full bg-white/80 border-2 border-slate-200 rounded-2xl px-4 py-4 text-sm focus:outline-none focus:border-brandPurple focus:ring-4 focus:ring-brandPurple/10 transition" placeholder="Provide dimensions, weight or specific freight guidelines..."></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-gradient-to-r from-brandPurple via-brandPink to-rose-600 hover:from-rose-600 hover:to-brandPurple text-white font-extrabold py-5 rounded-2xl text-xs uppercase tracking-widest transition shadow-glowPurple">
-                                Dispatch Message
-                            </button>
-                        </form>
-                        <div id="contact-success" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-600 rounded-2xl text-center text-xs font-bold shadow-sm">
-                            ✔ Message received. Our dispatcher desk will contact you soon.
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
     </main>
 
     <!-- Multi-color glowing timeline bar divider -->
@@ -782,10 +379,10 @@
             <div>
                 <h4 class="text-white font-bold mb-6 text-xs uppercase tracking-wider">Quick Links</h4>
                 <ul class="space-y-3 text-xs">
-                    <li><button onclick="switchView('home')" class="hover:text-brandGold transition-colors">Home</button></li>
-                    <li><button onclick="switchView('about')" class="hover:text-brandPurple transition-colors">About Us</button></li>
-                    <li><button onclick="switchView('services')" class="hover:text-brandTeal transition-colors">Services</button></li>
-                    <li><button onclick="switchView('contact')" class="hover:text-brandPink transition-colors">Contact</button></li>
+                    <li><a href="index.html" class="hover:text-brandGold transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-brandPurple transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brandTeal transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-brandPink transition-colors">Contact</a></li>
                 </ul>
             </div>
             <div>
@@ -800,28 +397,8 @@
         </div>
     </footer>
 
-    <!-- Interactive Toggle Scripts -->
+    <!-- Mobile Drawer Toggle Script -->
     <script>
-        // Force Video Autoplay (Chrome/Safari fallback)
-        document.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('hero-video');
-            if (video) {
-                const playPromise = video.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(() => {
-                        const playOnInteraction = () => {
-                            video.play();
-                            document.removeEventListener('click', playOnInteraction);
-                            document.removeEventListener('touchstart', playOnInteraction);
-                        };
-                        document.addEventListener('click', playOnInteraction);
-                        document.addEventListener('touchstart', playOnInteraction);
-                    });
-                }
-            }
-        });
-
-        // Mobile menu toggle script with icon transformation
         const btn = document.getElementById('menu-btn');
         const menu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
@@ -836,109 +413,6 @@
                 menuIcon.classList.remove('rotate-90');
             }
         });
-
-        // SPA View Router Script (Includes top loader effect)
-        function switchView(viewId) {
-            // Start top loading indicator animation
-            const loader = document.getElementById('top-loader');
-            loader.style.width = '30%';
-            
-            setTimeout(() => {
-                loader.style.width = '70%';
-            }, 150);
-
-            // Close mobile menu automatically
-            document.getElementById('mobile-menu').classList.add('hidden');
-            document.getElementById('menu-icon').setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
-
-            setTimeout(() => {
-                // Hide all views
-                const views = document.querySelectorAll('.view-section');
-                views.forEach(view => {
-                    view.classList.remove('active-view');
-                });
-
-                // Show selected view
-                const activeView = document.getElementById(`view-${viewId}`);
-                if (activeView) {
-                    activeView.classList.add('active-view');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-
-                // Update Navigation Highlighting
-                const links = document.querySelectorAll('#desktop-nav .nav-link');
-                links.forEach(link => {
-                    const navVal = link.getAttribute('data-nav');
-                    if (navVal === viewId) {
-                        link.className = `nav-link text-white bg-gradient-to-r from-brandBlue to-brandPurple px-5 py-2.5 rounded-full font-bold text-xs tracking-wider uppercase transition shadow-md`;
-                    } else {
-                        link.className = `nav-link text-slate-600 hover:text-brandPurple px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition`;
-                    }
-                });
-
-                // Finish loading bar animation
-                loader.style.width = '100%';
-                setTimeout(() => {
-                    loader.style.width = '0';
-                }, 200);
-
-            }, 300);
-        }
-
-        // Smooth Scroll Reveal using intersection observers
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const targets = document.querySelectorAll('.reveal-element');
-            targets.forEach(target => {
-                target.classList.add('reveal-element');
-                revealObserver.observe(target);
-            });
-        });
-
-        // Instant Quote Calculation algorithm
-        function calculateQuote(e) {
-            e.preventDefault();
-            const service = document.getElementById('quote-service').value;
-            const weight = parseFloat(document.getElementById('quote-weight').value);
-            const results = document.getElementById('quote-results');
-            const priceEl = document.getElementById('quote-price');
-
-            let base = 25.00;
-            let multiplier = 1.0;
-
-            if (service === 'sameday') {
-                base = 75.00;
-                multiplier = 1.5;
-            } else if (service === 'nextday') {
-                base = 35.00;
-                multiplier = 1.1;
-            } else {
-                base = 50.00;
-                multiplier = 0.9;
-            }
-
-            const calculatedPrice = (base + (weight * 0.45)) * multiplier;
-            priceEl.textContent = `£${calculatedPrice.toFixed(2)}`;
-            results.classList.remove('hidden');
-        }
-
-        // Contact Form handler
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            document.getElementById('contact-success').classList.remove('hidden');
-            e.target.reset();
-        }
     </script>
 </body>
 </html>
